@@ -1,0 +1,1225 @@
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="img/ZappnottLogo.png" type="image/icon">
+    <title>Home</title>
+</head>
+
+<script src="UserPage.js"></script>
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      display: inline-block;
+      width: 39.36px;
+      height: 31.33px;
+      background-color: #F7F8EA;
+      border-radius: 0.375rem; 
+      position: relative;
+    }
+
+    
+    input[type="checkbox"]:checked::after {
+      content: "";
+      display: block;
+      width: 0.5em;
+      height: 1em;
+      border: solid #000;
+      border-width: 0 0.25em 0.25em 0;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 5px; 
+      left: 16px; 
+    }
+    .Product-Cartt::-webkit-scrollbar {
+    display: none;
+    }
+    .Product-Cart::-webkit-scrollbar{
+        display: none;
+    }
+    .Cart-Container::-webkit-scrollbar{
+        display: none;
+    }
+
+    #NotifContents::-webkit-scrollbar {
+    height: 3px;
+    width: 5px; 
+    border-radius: 10px;
+    }
+
+    #NotifContents::-webkit-scrollbar-thumb {
+    background-color: rgba(103, 103, 103, 0.5);
+    border-radius: 10px; 
+
+
+    }
+    #message-input{
+        background-color: #f7f8ea;
+        font-size: 16px;
+        
+    }
+    #chat-box::-webkit-scrollbar {
+    height: 3px;
+    width: 5px; 
+    border-radius: 10px;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb {
+    background-color: rgba(103, 103, 103, 0.5); 
+    border-radius: 10px; 
+
+
+    }
+
+    #chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 46, 46, 0.7); 
+    }
+
+    #chat-box::-webkit-scrollbar-track {
+    background: #f7f8ea; 
+    border-radius: 60px; 
+    }
+    #NotifContents::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 46, 46, 0.7); 
+    }
+
+    #NotifContents::-webkit-scrollbar-track {
+    background: #f7f8ea;
+    border-radius: 60px; 
+    }
+
+    @keyframes spinFade {
+            0% {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .spin-fade {
+            animation: spinFade 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        
+        @keyframes expandFromLogo {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .expand-from-logo {
+            animation: expandFromLogo 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transform-origin: bottom right;
+        }
+        @keyframes collapseToLogo {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        .collapse-to-logo {
+            animation: collapseToLogo 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transform-origin: bottom right;
+        }
+        .content-hidden {
+            visibility: hidden;
+        }
+
+        /* Show content after expansion */
+        .content-visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease-in;
+        }
+    /* Custom CSS for Tailwind */
+    .search-bar.expanded {
+        width: 12rem; /* Width when expanded */
+        opacity: 1;
+        padding-left: 2.5rem; /* Space for the icon on the left */
+    }
+
+    #search-icon.expanded {
+        transform: translateX(-9rem); /* Move the icon to the left inside the search bar */
+    }
+</style>
+
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  
+ 
+<body class="" id="body">
+    <div id="userInfo" class="hidden"></div>
+    <div class="bg-Likha h-[5rem] w-full shadow-md p-2.5 fixed z-50" >
+        <nav class="md:flex md:items-center">   
+            <div >
+                <img src="img/ZappnottLogo.png" alt="" class="h-[4rem] ml-[2rem] cursor-pointer md:cursor-default" onclick="Menu(this)" name = "menu" id="menubutton">
+            </div>
+            <div class="">
+                <ul class="md:flex md:space-x-16 md:items-center md:z-auto md:static absolute bg-Likha w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in md:ml-24">
+                    <li class="my-6 md:my-0">
+                        <a href="#main-container" class="hover:text-outline duration-300">
+                            HOME
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="#Shop" class="hover:text-outline duration-300">
+                            SHOP
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="/3D" class="hover:text-outline duration-300">
+                            CREATE
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex fixed p-3 top-1 right-1 md:right-16">
+                <div class="relative flex items-center">
+                    <input type="text" id="search-bar" class="search-bar w-0 h-8 opacity-0 transition-all duration-500 ease-in-out px-4 py-2 rounded-full border border-gray-300 focus:opacity-100 focus:w-48" placeholder="Search">
+
+                    <lord-icon
+                        id="search-icon"
+                        onclick="expandSearchBar()"
+                        src="https://cdn.lordicon.com/kkvxgpti.json"
+                        trigger="hover"
+                        class="absolute right-0 transition-all duration-500 ease-in-out cursor-pointer"
+                        style="width:1.75rem;height:1.75rem;margin-right: 0.75rem;">
+                    </lord-icon>
+                </div>
+            
+
+                <a href="Profile.html" class="relative cursor-pointer inline-block p-[0.75rem]">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/bgebyztw.json"
+                        trigger="hover"
+                        stroke="bold"
+                        colors="primary:#000,secondary:#000"
+                        style="width:1.75rem;height:1.75rem;">
+                    </lord-icon>
+                </a>
+
+                <div class="relative cursor-pointer inline-block p-[0.75rem]">
+                    <lord-icon
+                        id="NotifIcon"
+                        src="https://cdn.lordicon.com/vspbqszr.json"
+                        trigger="hover"
+                        style="width:1.75rem;height:1.75rem;">
+                    </lord-icon>
+                    <span id="notif-badge" class="animate-ping absolute top-[0.70rem] right-[12px] inline-flex items-center justify-center h-[8px] w-[8px] leading-none bg-outline rounded-full"></span>
+                    <span id="notifBadge" class="absolute top-3 right-[13px] inline-flex items-center justify-center h-[6px] w-[6px] leading-none bg-outline rounded-full"></span>
+                </div>
+
+                <div class="relative cursor-pointer inline-block p-[0.5rem]">
+                    <lord-icon
+                        id="CartIcon"
+                        src="https://cdn.lordicon.com/taymdfsf.json"
+                        trigger="hover"
+                        stroke="bold"
+                        colors="primary:#121331,secondary:#121331"
+                        style="width:2rem;height:2rem;">
+                    </lord-icon>
+                </div>
+            </div>
+            
+        </nav>
+    </div>
+    <div class="bg-Likha min-h-screen pb-[3rem]" class="">
+        <div id="main-container" class="">
+            <div id="slide-container">    
+                <div id="slider-wrapper" class="relative max-w-[65-rem] pt-[5rem]"  >
+                    <div id="slider" class="flex aspect-[25/9] scroll-smooth overflow-x-hidden ">
+                        <img src="img/Slider1.jpg" class="flex flex-1  snap-align-start" id="Slider1" alt="">
+                        <img src="img/Slider2.jpg" class="flex flex-1 snap-align-start" id="Slider2"alt="">
+                        <img src="img/Slider3.jpg" class="flex flex-1 snap-align-start" id="Slider3" alt="">
+                    </div>
+                    <div id="slider-nav" class="flex grid-cols-2 gap-x-4 absolute bottom-[1.25rem] left-[50%] translate-x-[-50%]">
+                        <a id="Nav1" href="#Slider1" class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#fff] transition-opacity ease duration-200 opacity-[1]"></a>
+                        <a  id="Nav2" href="#Slider2" class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#fff] transition-opacity ease duration-200 opacity-25"></a>
+                        <a id="Nav3" href="#Slider3" class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#fff] transition-opacity ease duration-200 opacity-25"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="category" class="bg-[#B0BCA480] w-auto h-[21rem] flex flex-col items-center pt-[3.5rem] space-y-16">
+                <h5 class="font-libre font-semibold text-6xl">Categories</h5>
+                <div id="container"class ="flex items-center space-x-9">
+                   
+                        <div id="all" class="w-[325px] cursor-pointer h-[75px] bg-[#96A378CC] rounded-lg flex items-center flex-col pt-6">
+                            <p class="text-[#fff] font-bold text-xl">All</p>
+                        </div>
+                    
+
+                        <div id="Jewelry" class="w-[325px] cursor-pointer h-[75px] bg-[#96A378CC] rounded-lg flex items-center space-x-5 pl-[5.5rem]">
+                            <img src="img/Jewelry.png" alt="" class="w-[3rem]">
+                            <p class="text-[#fff] font-bold text-xl flex-1">Jewelry</p>
+                        </div>
+                    
+                    
+                        <div id="Bags" class="w-[325px] h-[75px] cursor-pointer bg-[#96A378CC] rounded-lg flex items-center space-x-5 pl-[6rem]">
+                            <img src="img/BAG.png" alt="" class="w-[3rem]">
+                            <p class="text-[#fff] font-bold text-xl flex-1">Bag</p>
+                        </div>
+                    
+                        <div id="Dress" class="w-[325px] cursor-pointer h-[75px] bg-[#96A378CC] rounded-lg flex items-center space-x-5 pl-[6.5rem]">
+                            <img src="img/DRESS.png" alt="" class="w-[2rem]">
+                            <p class="text-[#fff] font-bold text-xl flex-1">Dress</p>
+                        </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="bg-Likha  max-w-auto h-auto flex flex-col items-center pt-[6rem] space-y-32" id="Shop">
+                <div>
+                    <H6 class="text-6xl font-libre font-extrabold">Shop</H6>
+                </div>
+                <div class="flex-col">
+                    <div id="product-list" class="flex flex-wrap justify-start mx-10 hidden"></div>
+                    <div id="product-view" class=""></div>
+                    <div id="loading" class="relative flex justify-center space-x-9 ">
+                        <div class="w-[318px] shadow-lg relative rounded-xl h-[500px] bg-[#E2E2D0] animate-pulse">
+                            <div class="w-[289.19px] h-[124px] rounded-lg shadow-lg relative top-[22rem] mx-auto bg-[#CACACA]"></div>
+                        </div>
+                        <div class="w-[318px] rounded-xl shadow-lg h-[500px] bg-[#E2E2D0] animate-pulse">
+                            <div class="w-[289.19px] h-[124px] rounded-lg shadow-lg relative top-[22rem] mx-auto bg-[#CACACA]"></div>
+                        </div>
+                        <div class="w-[318px] h-[500px] shadow-lg rounded-xl bg-[#E2E2D0] animate-pulse">
+                            <div class="w-[289.19px] h-[124px] rounded-lg shadow-lg relative top-[22rem] mx-auto bg-[#CACACA]"></div>
+                        </div>
+                        <div class="w-[318px] h-[500px] shadow-lg rounded-xl bg-[#E2E2D0] animate-pulse">
+                            <div class="w-[289.19px] h-[124px] rounded-lg shadow-lg relative top-[22rem] mx-auto bg-[#CACACA]"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main-container"> 
+                    <div class="bg-[#D8BC8C80] w-[318px] h-[500px] mx-[1rem] group outline outline-outline outline-1 rounded-xl pt-5 pr-5 relative mb-[2rem]" id="product-container">
+                        <div class="flex flex-col items-center">
+                            <img src="https://res.cloudinary.com/db5bsftqx/image/upload/f_auto
+                            /v1727603900/aiah_xl5dtv.jpg" alt="${product.productName}" class="w-[80%] my-[4rem] object-fill group-hover:opacity-75 transition delay-300">
+                            <div class="bottom-3 mx-4 px-2 absolute inset-x-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300 w-[291px] h-[113px] bg-[#FFFFFF80] rounded-[5px]">
+                                <div class="flex-cols h-[95px] w-[200px]">
+                                    <h2 class="font-Montagu font-extrabold text-3xl">mwehehe</h2>
+                                    <p class="font-Montagu font-extrabold text-xl">3k</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-[#FFFFFF] cursor-pointer w-[50px] h-[50px] rounded-[100%] outline outline-outline outline-1 absolute right-3 top-3 z-10 flex items-center ">
+                            <img src="img/+.png" class="w-auto mx-auto">
+                        </div>
+                    </div>
+                    
+                </div> 
+            </div>
+            <div class="flex space-x-[4rem] w-[70rem] h-[35rem] bg-sign  outline outline-outline outline-2 rounded-xl fixed top-[28rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 hidden" id="Cartel">
+                <div id="Carts">
+                    <div id="Cart-Container" class="font-Montagu text-3xl font-semibold pt-4 pl-8 mb-6">Cart Product</div>
+                    <div id="Product-Cart" class="ml-[3.5rem] pb-1 w-[32rem] h-[29rem] flex flex-col items-center overflow-y-auto">
+                        <div id="Product-Cartt"></div>
+                    </div>
+                </div>
+                <div class="bg-outline absolute right-0 rounded-xl h-[35rem] w-[45%] z-10 p-3">
+                    <h1 class="text-[#F8ECDC] font-Montagu text-4xl ml-2 font-bold">Order Summary</h1>
+                    <div class="flex">
+                        <h1 class="font-Montserrat text-[#F8ECDC] font-extrabold ml-6 mt-9">Item(s)  Total:</h1>
+                        <h1 class=" mt-9 ml-[10rem] font-Montserrat text-[#F8ECDC] font-extrabold" id="totalPriceDisplay">$800</h1>
+                    </div>
+                    
+                    <hr class="w-[465px] text-[#F8ECDC] mx-2 mt-16">
+                    <label for="Promo" class="font-Montserrat text-[#F8ECDC] font-extrabold ml-6 mt-9">Promo Code:</label>
+                    <input type="text" class="bg-[#F8ECDC] p-2 ml-20 mt-9">
+                    <hr class="w-[465px] text-[#F8ECDC] mx-2 mt-11">
+                    <h1 class="font-Montserrat text-[#F8ECDC] font-extrabold ml-9 mt-9">Total: </h1>
+                    <button id="PlaceOrder" class="bg-[#F8ECDC] font-Montserrat font-semibold w-[310.42px] h-[61.84px] rounded-xl ml-28 mt-[2rem]">Place Order</button>
+                </div>
+                
+                <div class="bg-[#FFFFFF] w-[62px] h-[62px] rounded-[100%] outline outline-outline outline-1 cursor-pointer absolute right-3 top-3 z-10 flex items-center" id="CloseCart">
+                    <img src="img/x.png" class="w-auto mx-auto">
+                </div>
+            </div>
+            
+        </div>
+        <div id="CartPopup" class="fixed top-[20rem] z-30 items-center right-[37%] bg-[#F8ECDC] outline outline-4 outline-outline w-[350px] h-[220px] text-white  rounded shadow-lg hidden transform translate-y-4 transition-all duration-300">
+            <div class="">
+                <img src="img/Carts.png" class="w-[100px] ml-[34%]" alt="">
+                <div class="flex flex-col space-y-1 items-center">
+                    <span>Added to Cart</span>
+                    <span>Sucessfully!</span>
+                </div>
+            </div>
+            
+            
+            <button id="ok" onclick="CartOk()" class="ml-[38%] mt-3 bg-outline  text-[#FFF] rounded-3xl w-20">OK</button>
+        </div>
+        
+        <div id="OrderPopup" class="fixed top-[20rem] z-30 items-center right-[37%] bg-[#F8ECDC] outline outline-4 outline-outline w-[400.25px] h-[200px] text-white hidden rounded shadow-lg  transform translate-y-4 transition-all duration-300">
+            <img src="img/Checked.png" alt=" " class="w-[100px] ml-[35%]">
+            <div class="text-center">
+                 <p class="">Your Order Has Been Accepted</p>
+            </div>
+            
+            <button id="ok" onclick="OrderOk()" class="ml-[38%] mt-3 bg-outline  text-[#FFF] rounded-3xl w-20">OK</button>
+        </div>
+        <div id="Notif" class="fixed pl-3 py-3 h-[24rem] w-[30rem] hidden right-[8rem] top-[3.5rem] z-50 drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1]  rounded-lg bg-Likha ">
+            <div class="shadow-sm">
+                <p class="my-2 ml-2 font-Inter">Notification</p>
+                <hr class="border-1 border-[#D8BC8C80] w-[28.5rem]">
+            </div>
+            <div id="NotifContents" class="overflow-y-auto  h-[20rem]">
+                <div id="NotifContent" class="relative space-y-5 ">
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+        <img id="ChatLogo" src="img/ZappnottLogoOnly.png" alt="" class=" h-[4rem] fixed bottom-16 right-20 cursor-pointer z-40">
+    <div id="ChatContent" class="hidden fixed h-[35rem] w-[25rem] rounded-xl bottom-16 right-20 bg-Likha z-40 shadow-2xl">
+        <div class="shadow-sm">
+            <div class="flex">
+                <p class="my-2 font-Inter font-semibold ml-6">Zappnott</p>
+                <p id="ChatClose" class="absolute right-5 my-2 cursor-pointer font-Inter font-extrabold">X</p>
+            </div>
+            <hr class="border-1 border-[#D8BC8C80] w-[35rem]">
+            <div class="m-4">
+                <div id="chat-box" class="border p-4 h-[17rem] overflow-y-scroll bg-gray-50 rounded-lg">
+                </div>
+                <form autocomplete="off" id="message-form" class="mt-4 flex">
+                    <input autocomplete="off" type="text" id="message-input" class="border p-2 flex-grow rounded-l-lg" placeholder="Type a message...">
+                    <button type="submit" class="shadow-inner text-white p-2 rounded-r-lg">Send</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <div id="Loader" class="fixed hidden top-[20rem] z-[51]  right-[37%] bg-[#F8ECDC] outline outline-4 outline-outline w-[350px] h-[220px] text-white  rounded shadow-lg  transform translate-y-4 transition-all duration-300">
+        <div class="">
+            <div class="flex flex-col space-y-5 justify-center items-center mx-[3rem] my-4">
+                <p class="font-libre font-bold text-center">Payment process ongoing Please wait</p>
+                <svg class="animate-spin h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="#f17d55" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="#f17d55"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+                </svg>
+                <button id="cancellation" class="mt-3 bg-outline  text-[#FFF] rounded-3xl w-20">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="Overlay" class="z-[50] bg-[#333333] hidden fixed h-[100%] w-[100%] pointer-events-none top-0 left-0 opacity-35">
+
+    </div>
+</body>
+<script>
+    function expandSearchBar() {
+    const searchBar = document.getElementById('search-bar');
+    const searchIcon = document.getElementById('search-icon');
+    
+    searchBar.classList.toggle('expanded');
+    searchIcon.classList.toggle('expanded');
+}
+
+    document.addEventListener('DOMContentLoaded', () => {
+            fetchMessages();
+            setInterval(fetchMessages, 2000);
+        });
+
+        async function getCurrentUser() {
+            try {
+                const response = await fetch('/api/current_user');
+                if (response.ok) {
+                    const user = await response.json();
+                    return user.UserID;
+                    //console.log("User ID" + user.UserID); 
+                } else {
+                    window.location.href = '/SignIn.html'; 
+                }
+            } catch (error) {
+                console.error('Error fetching current user:', error);
+            }
+        }
+        let previousMessageCount = 0;
+        function scrollToBottom() {
+            const chatBox = document.getElementById('chat-box');
+            if (chatBox) {
+                requestAnimationFrame(() => {
+                    chatBox.scrollTo({
+                        top: chatBox.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            } else {
+                console.error('chatBox element not found.');
+            }
+        }
+    async function fetchMessages() {
+    
+    const userID = await getCurrentUser();
+    fetch('/api/messages')
+    .then(response => response.json())
+    .then(messages => {
+        //console.log(messages);
+        const chatBox = document.getElementById('chat-box');
+        chatBox.innerHTML = '';
+        const ID = parseInt(userID);
+       //console.log(ID);
+        messages.forEach(msg => {
+            const messageElement = document.createElement('div');
+            messageElement.innerHTML = `
+                <div id="CC" class="flex items-start">
+                    <div id="Chats" class="rounded-lg my-[5px] p-3 max-w-xs">
+                        <p id="Content" class="text-sm">${msg.message}</p>
+                    </div>
+                </div>
+            `;
+            const ChatContainer = messageElement.querySelector('#CC');
+            const ChatBG = messageElement.querySelector('#Chats');
+                //console.log(msg.SenderID);
+            if ( msg.SenderID === ID) {
+                ChatContainer.classList.add('justify-end');
+                ChatBG.classList.add('bg-[#6cc4f4]', 'text-[#FFF]');
+                ChatBG.classList.remove('bg-outline');
+            } else {
+                ChatBG.classList.add('bg-outline');
+            }
+
+            chatBox.appendChild(messageElement);
+        });
+        // console.log(previousMessageCount);
+        // console.log(messages.length);
+        if (messages.length > previousMessageCount) {
+            scrollToBottom();
+            console.log("Scroll");
+        }
+
+        previousMessageCount = messages.length;
+    })
+    .catch(error => {
+        console.error('Network error:', error);
+    });
+}
+
+        document.getElementById('message-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const message = document.getElementById('message-input').value;
+            fetch('/Chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            }).then(() => {
+                document.getElementById('message-input').value = '';
+                fetchMessages();
+            });
+        });
+
+        fetchMessages();
+        const logo = document.getElementById('ChatLogo');
+        const content = document.getElementById('ChatContent');
+        const closeButton = document.getElementById('ChatClose');
+
+        logo.addEventListener('click', () => {
+            
+            const logoRect = logo.getBoundingClientRect();
+
+            content.style.right = `${window.innerWidth - logoRect.right}px`;
+            content.style.bottom = `${window.innerHeight - logoRect.bottom}px`;
+            content.style.width = `${logoRect.width}px`;
+            content.style.height = `${logoRect.height}px`;
+
+            logo.classList.add('spin-fade');
+            
+
+            setTimeout(() => {
+                logo.classList.add('hidden'); 
+                content.classList.remove('hidden', 'content-hidden');
+                content.classList.add('expand-from-logo');
+                content.classList.remove('collapse-to-logo');
+
+                setTimeout(() => {
+                    content.style.width = '35rem';
+                    content.style.height = '25rem';
+
+                    setTimeout(() => {
+                        scrollToBottom();
+                        content.classList.remove('content-hidden');
+                        content.classList.add('content-visible');
+                    }, 700); 
+                }, 0);
+            }, 300);
+        });
+        closeButton.addEventListener('click', () => {
+            content.classList.remove('expand-from-logo', 'content-visible');
+            content.classList.add('collapse-to-logo');
+
+
+            setTimeout(() => {
+                content.classList.add('content-hidden');
+                content.classList.add('hidden');
+                content.style.width = 'initial';
+                content.style.height = 'initial';
+                
+
+                logo.classList.remove('hidden');
+                logo.classList.remove('spin-fade');
+            }, 400); 
+        });
+        function OrderOk(){
+            document.getElementById('OrderPopup').classList.add('hidden');
+        }
+        function CartOk(){
+            document.getElementById('CartPopup').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+        const cartToggle = document.getElementById('CartIcon');
+        const productCart = document.getElementById('Cartel');
+
+        cartToggle.addEventListener('click', () => {
+
+            if (!productCart.classList.contains('hidden')) {
+                productCart.classList.add('hidden');
+            } else {
+                productCart.classList.remove('hidden');
+            }
+        });
+    });
+    function disableScroll() {
+
+            scrollTop =
+                window.pageYOffset || document.documentElement.scrollTop;
+            scrollLeft =
+                window.pageXOffset || document.documentElement.scrollLeft;
+            
+            
+
+            window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+            };
+   }
+   function enableScroll() {
+        window.onscroll = function() {};
+    }
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const NotifIcon = document.getElementById('NotifIcon');
+        const Notif = document.getElementById('Notif');
+        const container = document.getElementById('main-container');
+        const body = document.getElementById('body');
+
+        NotifIcon.addEventListener('click', () => {
+
+            if (!Notif.classList.contains('hidden')) {
+                Notif.classList.add('hidden');
+                container.classList.remove('pointer-events-none');
+                enableScroll();
+                fetch('/UpdateNotif', {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                UpdatedNotif: 'read'
+                            })
+                        })
+                            .then(response => {
+                                return response.json;
+                            })
+                            .catch(error => {
+                                console.error('Error updating status:', error);
+                            });
+            } else {
+                Notif.classList.remove('hidden');
+                container.classList.add('pointer-events-none');
+                disableScroll();
+                        
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const cartToggle = document.getElementById('CloseCart');
+        const productCart = document.getElementById('Cartel');
+
+        cartToggle.addEventListener('click', () => {
+            // event.preventDefault();
+             productCart.classList.add('hidden');
+        });
+    });
+
+    function setCategory(category) {
+            const currentUrl = new URL(window.location);
+            currentUrl.searchParams.set('category', category);
+            window.location.href = currentUrl.toString();
+            
+        }
+
+        document.getElementById('all').addEventListener('click', () => {
+            setCategory('');
+            scrollToShop();
+        });
+
+        document.getElementById('Jewelry').addEventListener('click', () => {
+            setCategory('Jewelry');
+            scrollToShop(); 
+        });
+        document.getElementById('Bags').addEventListener('click', () => {
+            setCategory('Bag');
+            scrollToShop(); 
+        });
+        document.getElementById('Dress').addEventListener('click', () => {
+            setCategory('Dress');
+            scrollToShop(); 
+        });
+        async function Notif() {
+    try {
+        const response = await fetch(`/Notif`);
+        const products = await response.json();
+        
+        const productList = document.getElementById('NotifContent');
+        productList.innerHTML = '';
+        
+        products.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.innerHTML = `
+                <div class="flex relative w-auto py-auto justify-between">
+                    <div class="justify-center flex pl-2">
+                        <div class="items-center flex">
+                            <div class="notifdot bg-outline hidden w-2 h-2 rounded-full"></div>
+                        </div>
+                        <div class="justify-center flex flex-col pl-5">
+                            <h1 class="font-Inter text-sm">${product.Content}</h1>
+                            <h1 class="font-Inter text-sm">${product.Date}</h1>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="${product.productImage}" alt="${product.productName}" class="w-[7rem] h-[7rem]">
+                    </div>
+                </div>
+            `;
+            productList.appendChild(productElement);
+
+            const notifdot = productElement.querySelector('.notifdot');
+            if (product.Status === 'unread') {
+                notifdot.classList.remove('hidden');
+            } else {
+                notifdot.classList.add('hidden');
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching notifications:', error);
+    }
+}
+    
+    function fetchProducts(category = '') {
+    
+    fetch(`/products?category=${category}`)
+        .then(response => {
+        if (response.ok) {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('product-list').classList.remove('hidden');
+        }
+        return response.json();
+    })
+        .then(products => {
+            
+            products.forEach(product => {
+                const productList = document.getElementById('product-list');
+
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <div id="main-container"> 
+                        <div class="bg-[#D8BC8C80] w-[318px] h-[500px] mx-[1rem] group outline outline-outline outline-1 rounded-xl pt-5 pr-5 relative mb-[2rem]" id="product-container">
+                            <div class="flex flex-col items-center">
+                                <img src="${product.imagePath}" alt="${product.productName}" class="w-[80%] my-[4rem] object-fill group-hover:opacity-75 transition delay-300">
+                                <div class="bottom-3 mx-4 px-2 absolute inset-x-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300 w-[291px] h-[113px] bg-[#FFFFFF80] rounded-[5px]">
+                                    <div class="flex-cols h-[95px] w-[200px]">
+                                        <h2 class="font-Montagu font-extrabold text-3xl">${product.productName}</h2>
+                                        <p class="font-Montagu font-extrabold text-xl">Price: ${product.productPrice}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-[#FFFFFF] cursor-pointer w-[50px] h-[50px] rounded-[100%] outline outline-outline outline-1 absolute right-3 top-3 z-10 flex items-center ">
+                                <img src="img/+.png" class="w-auto mx-auto">
+                            </div>
+                        </div>
+                        
+                    </div> 
+                `;
+                productList.appendChild(productElement);
+
+                 productElement.querySelector('#product-container').addEventListener('click', function() {
+                   
+                    const productContainer = productElement.querySelector('#product-container');
+                    const productName = productContainer.querySelector('h2').innerText;
+                    const productPrice = productContainer.querySelector('p').innerText.replace('Price: ', '');
+                    const productImage = productContainer.querySelector('img').src;
+                    const productView = document.getElementById('product-view');
+                    const productviewelement = document.createElement('div');
+
+                    productviewelement.innerHTML = `<div class="flex space-x-[4rem] w-[60rem] h-[30rem] bg-sign pl-[9rem] outline outline-outline outline-1 rounded-xl fixed top-[28rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 items-center  hidden" id="ProductView">
+                                <div class="flex items-center justify-center bg-[#D8BC8C80] w-[23rem] h-[25rem] rounded-xl">
+                                    <img src="" id="editedProductImage" alt="" class="w-[50%] my-[4rem]">
+                                </div>
+                                <div class="flex-col space-y-3">
+                                    <h2 class="font-Montagu font-extrabold text-3xl" id="editedProductName"></h2>
+                                    <p class="font-Montagu font-extrabold text-xl" id="editedProductPrice"></p>
+                                    <p class="font-Montagu font-extrabold text-xl" id="productDes">${product.productDes}</p>
+                                    <div id="stock" class=" flex w-[138px] h-[40px] bg-[#F7F8EA] justify-center space-x-2 outline outline-1 outline-outline rounded-lg">
+                                        <button id="mo" class="font-bold">-</button>
+                                        <input style="background-color: transparent;" id="number" class=" text-center w-[138px] h-[40px] p-1 font-bold" type="number" value="1" min="1" max="100">
+                                        <button id="ao" class="font-bold">+</button>
+                                    </div>
+                                    <button class="bg-[#F07C54] rounded-lg px-4 py-2 bg-green-500 text-white rounded" id="AddToCart">Add to cart</button>
+                                </div>
+                                
+                                <div class="bg-[#FFFFFF] w-[62px] h-[62px] rounded-[100%] outline justify-center outline-outline outline-1 cursor-pointer absolute right-3 top-3 z-10 flex items-center" id="CloseEdit">
+                                    <div class = "font-Montserrat font-black text-4xl">X</div>
+                                </div>
+                            </div>`;
+
+                            productView.appendChild(productviewelement);
+
+                            
+                        
+                        const editedProductNameInput = productviewelement.querySelector('#editedProductName');
+                        const editedProductPriceInput = productviewelement.querySelector('#editedProductPrice');
+                        const editedProductImage = productviewelement.querySelector('#editedProductImage');
+
+                        editedProductImage.src = productImage;
+                        editedProductNameInput.innerText = productName;
+                        editedProductPriceInput.innerText = "Price: " + productPrice;
+
+                        
+                        const ProductView = productviewelement.querySelector("#ProductView");
+                        ProductView.classList.remove('hidden');
+                    
+                        
+                            productviewelement.querySelector('#CloseEdit').addEventListener('click', function() {
+                            
+                            const productView = productviewelement.querySelector('#ProductView');
+                            productView.classList.add('hidden');
+                        });
+
+                        // productviewelement.querySelector('#ao').addEventListener('click',function(){
+                        //     const Quantity = productviewelement.querySelector('#number')
+                        //     const currentValue = parseInt(Quantity.value);
+                        //     const newValue = currentValue + 1;
+                        //     newValue = Quantity.value;
+
+                        // })
+                        document.addEventListener('click',function(event){
+                            const Increment = event.target.closest('#ao');
+                            if(Increment){
+                                const Quantity = productviewelement.querySelector('#number');
+                                const currentValue = parseInt(Quantity.value);
+                                const newValue = currentValue + 1;
+                                Quantity.value = newValue;
+                            }
+                        });
+                        document.addEventListener('click',function(event){
+                            const Decrement = event.target.closest('#mo');
+                            if(Decrement){
+                                const Quantity = productviewelement.querySelector('#number');
+                                const currentValue = parseInt(Quantity.value);
+                                if(currentValue > 1){
+                                const newValue = currentValue - 1;
+                                Quantity.value = newValue;
+                                }
+                            }
+                        });
+                          
+                            const Add = productviewelement.querySelector('#AddToCart');
+                            Add.addEventListener('click',function(){
+                            const ProductN = editedProductNameInput.textContent;
+                            const ProductQ = productviewelement.querySelector('#number').value;
+                            const Num = parseInt(ProductQ);
+                            const Data ={
+                                    ProductName: ProductN,
+                                    Quantity: Num
+                            };
+                            fetch('/AddToCart', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(Data)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Success:', data);
+                                    productviewelement.querySelector('#ProductView').classList.add('hidden');
+                                    document.getElementById('CartPopup').classList.remove('hidden');
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });
+                        });
+                        
+                    });   
+            });
+
+        })
+        .catch(error => console.error('Error fetching products:', error));
+    }   
+
+    function scrollToShop() {
+            const shopElement = document.getElementById('Shop');
+            if (shopElement) {
+                shopElement.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+        }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || ''; 
+        fetchProducts(category);
+
+        
+    });
+
+    async function fetchCart() {
+    const CartList = document.getElementById('Product-Cart');
+    CartList.innerHTML = '';
+
+    try {
+        const response = await fetch('/Cart');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const productsCart = await response.json();
+
+        productsCart.forEach((productCart, index) => {
+            const CartElement = document.createElement('div');
+            CartElement.dataset.index = index;  
+            CartElement.innerHTML = `
+                <div class="flex items-center space-x-10">
+                    <input type="checkbox" class="appearance-none w-[39.36px] h-[31.33px] bg-[#F7F8EA] outline outline-2 outline-outline rounded-md" value="${productCart.productPrice}"></input>
+                    <div>
+                        <img src="${productCart.productImage}" alt="Product Image" class="w-28">
+                    </div>
+                    <div>
+                        <h1>${productCart.productName}</h1>
+                        <h2>${productCart.productPrice}</h2>
+                        <div class="flex w-[120px] h-[40px] bg-[#F7F8EA] justify-center space-x-2 outline outline-1 outline-outline rounded-lg">
+                            <button class="MOcart">-</button>
+                            <input style="background-color: transparent;" id="Quantity" class="text-center w-[138px] h-[40px] p-1 font-bold" type="number" value=${productCart.productQuantity} min="1" max="100">
+                            <button class="AOcart">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            CartList.appendChild(CartElement);
+        });
+
+        const checkboxes = CartList.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSum);
+        });
+
+        updateSum();
+
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
+}
+
+document.getElementById('CartIcon').addEventListener('click', fetchCart);
+
+    document.addEventListener('click', function(event) {
+        const Increment = event.target.closest('.AOcart');
+        if (Increment) {
+            const CartElement = Increment.closest('div[data-index]');
+            const Quantity = CartElement.querySelector('#Quantity');
+            const currentValue = parseInt(Quantity.value);
+            const newValue = currentValue + 1;
+            Quantity.value = newValue;
+            //console.log(newValue);
+
+            const productName = CartElement.querySelector('h1').innerText;
+            //console.log(productName);
+
+            const Data = {
+                ProductN: productName,
+                Quantity:  newValue
+            }
+
+            fetch('/UpdateCart', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Success update:', data);
+                fetchCart();
+                })
+                .catch((error) => {
+                     console.error('Error:', error);
+                });
+            
+        }
+    });
+
+    document.addEventListener('click', function(event) {
+        const Decrement = event.target.closest('.MOcart');
+        if (Decrement) {
+            const CartElement = Decrement.closest('div[data-index]');
+            const Quantity = CartElement.querySelector('#Quantity');
+            const currentValue = parseInt(Quantity.value);
+            if (currentValue > 1) {
+                const newValue = currentValue - 1;
+                Quantity.value = newValue;
+                console.log(newValue);
+                const productName = CartElement.querySelector('h1').innerText;
+                //console.log(productName + " ");
+
+            const Data = {
+                ProductN: productName,
+                Quantity:  newValue
+            }
+
+            fetch('/UpdateCart', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Success update:', data);
+                fetchCart();
+                })
+                .catch((error) => {
+                     console.error('Error:', error);
+                });
+            }
+            
+
+        }
+    });
+
+
+    function updateSum() {
+        const checkboxes = document.querySelectorAll('#Product-Cart input[type="checkbox"]');
+        const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+        let sum = 0;
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                sum += parseFloat(checkbox.value);
+            }
+        });
+        totalPriceDisplay.textContent = `₱${sum.toLocaleString('en-PH')}`;
+    }
+
+    const PlaceOrderBtn = document.querySelector('#PlaceOrder');
+
+        PlaceOrderBtn.addEventListener('click', async function() {
+        const checkboxes = document.querySelectorAll('#Product-Cart input[type="checkbox"]');
+        console.log(checkboxes);
+        const checkedValues = [];
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                const productElement = checkbox.closest('.flex');
+                const productName = productElement.querySelector('h1').innerText;
+                const productQuantity = productElement.querySelector('input[type="number"]').value;
+                //const productPrice = parseFloat(productElement.querySelector('h2').innerText);
+
+                checkedValues.push({
+                    OrderProductName: productName,
+                    OrderQuantity: productQuantity,
+                    //OrderPrice: productPrice
+                });
+            }
+        });
+
+        if (checkedValues.length > 0) {
+            let cancelRequested = false; 
+
+            try {
+                // Get the price value
+                const priceElement = document.getElementById('totalPriceDisplay');
+                const priceText = priceElement.innerText;
+
+                let price = parseFloat(priceText.replace(/[^\d.-]/g, ''));
+                const amountInCentavos = price * 100;
+
+                const loader = document.getElementById('Loader');
+                const overlay = document.getElementById('Overlay');
+                loader.classList.remove('hidden');
+                overlay.classList.remove('hidden');
+
+                const cancelButton = document.getElementById('cancellation');
+                cancelButton.addEventListener('click', () => {
+                    cancelRequested = true; 
+                    loader.classList.add('hidden');
+                    overlay.classList.add('hidden');
+                    alert('Payment process canceled.');
+
+                    const PaymentID = paymentIntentData.data.id;
+                    console.log(PaymentID);
+
+                    fetch('/archive-link', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ID: PaymentID }),
+                    });
+
+
+                });
+
+                
+                const createPaymentResponse = await fetch('/create-payment-link', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ amount: amountInCentavos }),
+                });
+
+                const paymentIntentData = await createPaymentResponse.json();
+
+                
+                console.log('Payment Intent Created:', paymentIntentData);
+
+                const clientKey = paymentIntentData.data.attributes.checkout_url;
+                const referenceNumber = paymentIntentData.data.attributes.reference_number; 
+                console.log(clientKey);
+                console.log(referenceNumber);
+
+                if (clientKey) {
+                    
+                    window.open(clientKey, '_blank');
+                    const checkPaymentStatus = async () => {
+                        if (cancelRequested) return; 
+
+                        try {
+                            const retrievePaymentResponse = await fetch('/retrieve-payment-link', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ reference_number: referenceNumber }),
+                            });
+
+                            const paymentStatusData = await retrievePaymentResponse.json();
+                            console.log('Payment Status:', paymentStatusData);
+
+                            if (paymentStatusData.data && paymentStatusData.data.length > 0) {
+                                const paymentStatus = paymentStatusData.data[0].attributes.status;
+
+                                if (paymentStatus === 'paid') {
+                                    loader.classList.add('hidden');
+                                    overlay.classList.add('hidden');
+
+                                    fetch('/PlaceOrder', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({ orders: checkedValues })
+                                    })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            return response.text().then(text => {
+                                                throw new Error(text);
+                                            });
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        console.log('Success:', data);
+                                        document.getElementById('Cartel').classList.add('hidden');
+                                        document.getElementById('OrderPopup').classList.remove('hidden');
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error:', error.message);
+                                    });
+                                } else {
+                                    setTimeout(checkPaymentStatus, 5000); 
+                                }
+                            } else {
+                                setTimeout(checkPaymentStatus, 5000);
+                            }
+                        } catch (error) {
+                            console.error('Error checking payment status:', error);
+                            setTimeout(checkPaymentStatus, 5000);
+                        }
+                    };
+
+                    checkPaymentStatus();
+
+                } else {
+                    console.error('Client key not found in payment intent response');
+                    loader.classList.add('hidden'); 
+                    overlay.classList.add('hidden'); 
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                loader.classList.add('hidden'); 
+                overlay.classList.add('hidden'); 
+            }
+        } else {
+            alert('Please select a product');
+        }
+
+
+    });
+
+
+    async function fetchUnreadCount() {
+        try {
+            const response = await fetch('/NotifBadge'); 
+            const data = await response.json();
+            const unreadCount = data.NotificationID;
+            //console.log(data);
+            const notifBadge = document.getElementById('notif-badge');
+            const notifPing = document.getElementById('notifBadge');
+            if (unreadCount > 0) {
+                notifBadge.style.display = 'inline-flex';
+                notifPing.style.display = 'inline-flex';
+            } else {
+                notifBadge.style.display = 'none';
+                notifPing.style.display = 'none';
+            }
+        } catch (error) {
+            console.error('Error fetching unread count:', error);
+        }
+    }
+
+
+   document.addEventListener('DOMContentLoaded', fetchUnreadCount);
+
+
+   setInterval(fetchUnreadCount,10); 
+
+   setInterval(Notif, 1000);
+</script>   
+
+<script src="SliderScript.js"></script>
+
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="img/ZappnottLogo.png" type="image/icon">
+    <title>Checkout</title>
+</head>
+<style>
+     input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #F07C54;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+        input[type="radio"]:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background-color: #F07C54;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+                path {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: draw 1s ease forwards;
+        }
+
+        @keyframes draw {
+        to {
+            stroke-dashoffset: 0;
+        }
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      display: inline-block;
+      width: 39.36px;
+      height: 31.33px;
+      background-color: #F7F8EA;
+      border-radius: 0.375rem; 
+      position: relative;
+    }
+
+    
+    input[type="checkbox"]:checked::after {
+      content: "";
+      display: block;
+      width: 0.5em;
+      height: 1em;
+      border: solid #000;
+      border-width: 0 0.25em 0.25em 0;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 5px; 
+      left: 16px; 
+    }
+
+    .Product-Cartt::-webkit-scrollbar {
+        display: none;
+
+    }
+    @keyframes Cart {
+        0% {
+        opacity: 0;
+        transform: translateX(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .animation-Cart{
+        animation: Cart 0.75s ease-in-out forwards;
+    }
+    @keyframes CloseCart {
+        0% {
+        opacity: 1;
+        transform: translateX(0%);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(50%);
+        }
+    }
+    .Close-Cart{
+        animation: CloseCart 0.5s ease-in-out forwards;
+    }
+    #NotifContents::-webkit-scrollbar {
+    height: 3px;
+    width: 5px; 
+    border-radius: 10px;
+    }
+
+    #NotifContents::-webkit-scrollbar-thumb {
+    background-color: rgba(103, 103, 103, 0.5);
+    border-radius: 10px; 
+
+
+    }
+    #message-input{
+        background-color: #f7f8ea;
+        font-size: 16px;
+        
+    }
+    #chat-box::-webkit-scrollbar {
+    height: 3px;
+    width: 5px; 
+    border-radius: 10px;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb {
+    background-color: rgba(103, 103, 103, 0.5); 
+    border-radius: 10px; 
+
+
+    }
+
+    #chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 46, 46, 0.7); 
+    }
+
+    #chat-box::-webkit-scrollbar-track {
+    background: #f7f8ea; 
+    border-radius: 60px; 
+    }
+    #NotifContents::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 46, 46, 0.7); 
+    }
+
+    #NotifContents::-webkit-scrollbar-track {
+    background: #f7f8ea;
+    border-radius: 60px; 
+    }
+    @keyframes spinFade {
+            0% {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .spin-fade {
+            animation: spinFade 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        
+        @keyframes expandFromLogo {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .expand-from-logo {
+            animation: expandFromLogo 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transform-origin: bottom right;
+        }
+        @keyframes collapseToLogo {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        .collapse-to-logo {
+            animation: collapseToLogo 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transform-origin: bottom right;
+        }
+        .content-hidden {
+            visibility: hidden;
+        }
+
+        /* Show content after expansion */
+        .content-visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease-in;
+        }
+    /* Custom CSS for Tailwind */
+    .search-bar.expanded {
+        width: 12rem; /* Width when expanded */
+        opacity: 1;
+        padding-left: 2.5rem; /* Space for the icon on the left */
+    }
+
+    #search-icon.expanded {
+        transform: translateX(-9rem); /* Move the icon to the left inside the search bar */
+    }
+
+</style>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<body>
+    <div class="bg-Likha h-[5rem] w-full shadow-md p-2.5 fixed z-50" >
+        <nav class="md:flex md:items-center">   
+            <div >
+                <img src="img/ZappnottLogo.png" alt="" class="h-[4rem] ml-[2rem] cursor-pointer md:cursor-default" onclick="Menu(this)" name = "menu" id="menubutton">
+            </div>
+            <div class="">
+                <ul class="md:flex md:space-x-14 md:items-center md:z-auto md:static absolute bg-Likha w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in md:ml-24">
+                    <li class="my-6 md:my-0">
+                        <a href="Index.html" class="font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            HOME
+                        </a>
+                    </li>
+                    <li>
+                        <div class="relative inline-block text-left">
+                            <div>
+                              <button type="button" class="inline-flex w-full justify-center font-Montserrat text-[12px] rounded-md bg-Likha text-sm font-semibold hover:text-outline duration-300" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                SHOP
+                                <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                              </button>
+                            </div>
+                          
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                  const menuButton = document.getElementById('menu-button');
+                                  const dropdownMenu = document.querySelector('[role="menu"]');
+                              
+                                  menuButton.addEventListener('click', function () {
+                                    dropdownMenu.classList.toggle('hidden');
+                                  });
+                              
+                                  document.addEventListener('click', function (event) {
+                                    if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                                      dropdownMenu.classList.add('hidden');
+                                    }
+                                  });
+                                });
+                              </script>
+                              
+                            <div class="absolute drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1] py-2 right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-Likha hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                              <div class="py-1" role="none">
+                                <a href="AllCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-0">All</a>
+                                <a href="DressCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-1">Dress</a>
+                                <a href="BagCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-2">Bag</a>
+                                <a href="JewelryCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-2">Jewelry</a>
+                              </div>
+                            </div>
+                        </div>
+                          
+                          
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="/3D" class="font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            CUSTOMIZATION
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="Index.html#About" class="smooth-scroll font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            ABOUT
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="Index.html#footer" class="smooth-scroll font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            CONTACT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex fixed p-3 top-1 right-1 md:right-16">
+                <div class="relative flex items-center">
+                    <input type="text" id="search-bar" class="search-bar w-0 h-8 opacity-0 transition-all duration-500 ease-in-out px-4 py-2 rounded-full border border-gray-300 focus:opacity-100 focus:w-48" placeholder="Search" autocomplete="off">
+
+                    <lord-icon
+                        id="search-icon"
+                        onclick="expandSearchBar()"
+                        src="https://cdn.lordicon.com/kkvxgpti.json"
+                        trigger="hover"
+                        class="absolute right-0 transition-all duration-500 ease-in-out cursor-pointer"
+                        style="width:1.75rem;height:1.75rem;margin-right: 0.75rem;">
+                    </lord-icon>
+                    <div id="SearchCon" class="bg-Likha h-auto w-[15rem] absolute top-12 rounded-3xl hidden shadow-2xl">
+                        
+                    </div>
+                </div>
+            
+
+                <div class="relative cursor-pointer inline-block p-[0.75rem]" id="ProfileIcon">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/kthelypq.json"
+                        trigger="hover"
+                        colors="primary:#000000"
+                        style="width:1.75rem;height:1.75rem">
+                    </lord-icon>
+                </div>
+
+                <div class="relative cursor-pointer inline-block p-[0.75rem]">
+                    <lord-icon
+                        id="NotifIcon"
+                        src="https://cdn.lordicon.com/vspbqszr.json"
+                        trigger="hover"
+                        style="width:1.75rem;height:1.75rem;">
+                    </lord-icon>
+                    <span id="notif-badge" class="animate-ping absolute top-[0.70rem] right-[12px] hidden items-center justify-center h-[8px] w-[8px] leading-none bg-outline rounded-full "></span>
+                    <span id="notifBadge" class="absolute top-3 right-[13px] items-center hidden justify-center h-[6px] w-[6px] leading-none bg-outline rounded-full"></span>
+                </div>
+
+                <div class="relative cursor-pointer inline-block p-[0.5rem]">
+                    <lord-icon
+                        id="CartIcon"
+                        src="https://cdn.lordicon.com/taymdfsf.json"
+                        trigger="hover"
+                        stroke="bold"
+                        colors="primary:#121331,secondary:#121331"
+                        style="width:2rem;height:2rem;">
+                    </lord-icon>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="bg-Likha min-h-screen pb-8 pt-32">
+        <div class="flex space-x-10 justify-center">
+            <div class="w-[708px] h-[120vh]">
+                <div>
+                    <h1 class="font-Montserrat font-semibold text-[20px] ml-8 mb-6">Checkout</h1>
+                    <div class="w-[708px] h-[205px] bg-[#f07b5433] rounded relative">
+                        <div class="relative left-[3rem] top-6 space-y-1">
+                            <h1 class="font-Inter font-semibold text-[16px] text-[#00000080]">
+                                Name
+                            </h1>
+                            <div class="w-[269px] h-[40px] outline outline-2 outline-outline p-2">
+                                <p id="Name" class="font-Inter font-normal text-[16px] text-[#00000080]">
+                                    JENNIE KIM
+                                </p>
+                            </div>
+                        </div>
+                        <div class="relative left-[3rem] top-[2rem] space-y-1">
+                            <h1  class="font-Inter font-semibold text-[16px] text-[#00000080]">
+                                Email
+                            </h1>
+                            <div class="w-[269px] h-[40px] outline outline-2 outline-outline p-2">
+                                <p id="Email" class="font-Inter font-normal text-[16px] text-[#00000080]">
+                                    jennierubyjane.kim@email.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute right-[3rem] top-6 space-y-1">
+                            <h1 class="font-Inter font-semibold text-[16px] text-[#00000080]">
+                                Mobile No.
+                            </h1>
+                            <div class="w-[269px] h-[40px] outline outline-2 outline-outline p-2">
+                                <p id="Mobile" class="font-Inter font-normal text-[16px] text-[#00000080]">
+                                    +63 9033526492
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <h1 class="font-Montserrat font-semibold text-[20px] ml-8 my-3">Pick Up Schedule</h1>
+                        <p class="text-[12px] w-[434px] font-Inter font-semibold text-[#00000080]">(Our working days is 10 days. Choose a date when you want to pick up your order)</p>
+                    </div>
+                    <div class="w-[708px] h-[205px] bg-[#f07b5433] rounded items-center flex flex-col ">
+                        <div class="relative space-y-1 mt-3">
+                            <h1 class="font-Inter font-semibold text-[16px] text-[#00000080]">Date</h1>
+                            <div id="PickUp" class="w-[580px] h-[40px] outline outline-2 outline-outline flex items-center pl-6  relative cursor-pointer">
+                                <h1 id="Indicator" class="font-Inter text-[#00000080]">
+                                    Select pick up date
+                                </h1>
+                                
+                                <svg class="-mr-1 h-5 w-5 text-gray-400 absolute right-8" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div id="dropdown" class="w-[500px] h-auto absolute bg-Likha left-1/2 -translate-x-1/2 hidden space-y-1 mt-1 shadow-2xl rounded-md">
+                                <div id="date1" class="p-2 hover:bg-gray-200 cursor-pointer"></div>
+                                <div id="date2" class="p-2 hover:bg-gray-200 cursor-pointer"></div>
+                                <div id="date3" class="p-2 hover:bg-gray-200 cursor-pointer"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden">
+                            <h1 class="font-Inter font-semibold text-[16px] text-[#00000080]">Notes</h1>
+                            <div class="w-[580px] h-[40px] outline outline-2 outline-outline">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-5">
+                        <h1 class="font-Montserrat font-semibold text-[20px] ml-8 my-3">Payment Method</h1>
+                        <h3 class="font-Montserrat font-semibold text-[12px] text-[#00000080]">(We only accept online payment)</h3>
+                    </div>
+                    
+                    <div class="flex w-[708px] h-[91px] bg-[#f07b5433] rounded">
+                        <div class="flex items-center ml-9">
+                            <img src="https://res.cloudinary.com/db5bsftqx/image/upload/f_auto/v1727603906/Checked_ol98y2.png" alt="" class="h-[5rem] w-[5rem]">
+                            <label for="html" class="font-Montserrat font-semibold text-[16px]">Online</label><br>
+                        </div>
+                    </div>
+                    <div id="OP" class="w-[708px] h-[200px] bg-[#D9D9D9F2] flex-col flex items-center justify-center relative space-y-3 ">
+                        <img src="img/payment.png" class="w-[100px] h-[100px]">
+                        <p class="font-Montserrat font-semibold text-[12px] text-center w-[450px]">After clicking “Pay now”, you will be redirected to Secure Payments via PayMongo to complete your purchase securely.</p>
+                        <h5 class="font-Montserrat font-semibold text-[10px] text-[#FC0C0C]">Disclamer: Your payment are not refundable 30 days after pick up date.</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[600px] h-[120vh] ">
+                <div class="">
+                    <h1 class="font-Montserrat font-semibold text-[20px] ml-8 mb-6">Order Summary</h1>
+                    <div class="bg-[#f07b5433] w-[600px] h-[795px] p-8 rounded">
+                        <div class="w-auto h-[30rem]">
+                            <div id="Product"></div>
+                        </div>
+                        <div>
+                            <hr class="border border-1 border-[#F07C54]">
+                            <div class=" w-[500px] h-[5rem] mx-auto relative">
+                                <p class="absolute top-2 left-4">Sub Total:</p>
+                                <p class="absolute left-4 bottom-3">Estimated taxes:</p>
+                                <h1 id="SubTotal" class="absolute right-8 top-2">₱ 51,000.00</h1>
+                                <h2 class="absolute right-16 bottom-3">--</h2>
+                            </div>
+                            <hr class="border border-1 border-[#F07C54]">
+                            <div class="flex h-[4rem] mt-4 items-center justify-between p-8">
+                                <h1 class="font-Montserrat font-extrabold text-[19px]">Total:</h1>
+                                <p id="TotalPrice" class="font-Montserrat font-extrabold text-[19px]">₱ 51,000.00</p>
+                            </div>
+                            <button id="PlaceO" class="bg-[#f07b54] font-Montserrat font-semibold w-[500px] h-[61.84px] rounded-xl mx-4 mt-[2rem] text-[#ffffff]" >Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fixed hidden right-0 top-0 h-full w-[570px] bg-Likha z-[50] shadow-2xl p-6" id="Cartel">
+            <div>
+                <div class="flex items-center justify-between">
+                    <h1 class="font-Montagu font-semibold text-[24px] ml-3 mb-4">Cart Product</h1>
+                    <img src="img/ekis.png" alt="" class="w-[20px] h-[20px] relative mb-5 mr-5 cursor-pointer" id="CloseCart">
+                </div>
+                <hr class="border-outline border-[1.5px] w-auto">
+    
+            </div>
+            <div id="Product-Cart" class="overflow-auto h-[70vh] Product-Cartt"></div>
+            <div class="my-3 flex relative">
+                <h2 class="relative left-6 font-Montserrat font-extrabold text-[16px]">Total: </h2>
+                <p class="absolute right-6 font-Montserrat font-semibold text-[16px]" id="totalPriceDisplay">₱ 0.00</p>
+            </div>
+            <hr class="border-1 border-outline w-auto ">
+            <button id="PlaceOrder" class="bg-outline  font-Montserrat font-semibold w-[500px] h-[61.84px] rounded-xl mx-4 mt-[2rem]">CHECKOUT</button>
+        </div>
+        <div id="Notif" class="fixed pl-3 py-3 h-[24rem] w-[30rem] hidden right-[8rem] top-[3.5rem] z-50 drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1]  rounded-lg bg-Likha ">
+            <div class="shadow-sm">
+                <p class="my-2 ml-2 font-Inter">Notification</p>
+                <hr class="border-1 border-[#D8BC8C80] w-[28.5rem] mb-1">
+            </div>
+            <div id="NotifContents" class="overflow-y-auto  h-[20rem]">
+                <div id="NotifContent" class="relative space-y-5 ">
+                
+                </div>
+            </div>
+        </div>
+        <div id="ProfileMenu" class="fixed hidden flex-col h-[300px] w-[300px] right-[11rem] top-[3.5rem] z-50 drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1]  rounded-lg bg-Likha flex justify-center">
+            <div class="flex flex-col items-center">
+                <div class="w-[80px] h-[80px] bg-outline rounded-full outline outline-1 outline-outline">
+                    <img id="ProfilePicMenu" src="img/profileblank.png" alt="" class="w-[80px] h-[80px] rounded-full">
+                </div>
+                <div id="UsernameMenu" class="font-Inter">
+                    jennierubyjane
+                </div>
+            </div>
+            <div class="py-1 flex" ></div>
+                <div class="flex-col flex relative">
+                    <a href="Profile.html" class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-0">Account</a>
+                    <a href="Orders.html" class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-1">Orders</a>
+                    <a href="BagCategory.html" class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-2">Design</a>
+                    <hr class="border-outline border-[1.5px] w-[250px] mx-auto relative my-2">
+                    <div class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="LogOut">Log Out</div>
+                </div>
+            </div>
+            <div id="LogOutModal" class="fixed top-1/2 z-30 flex flex-col items-center justify-center left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F8ECDC] w-[350px] h-[220px] text-white  rounded shadow-lg transform hidden transition-all duration-300">
+                <div class="flex flex-col items-center justify-center">
+                    <img src="img/LogOutModal.png" class="w-[80px]" alt="">
+                    <div class="flex flex-col space-y-1 items-center w-[19rem] text-center">
+                        <span>Are you sure you want to Log Out?</span>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-8 mt-5">
+                    <button id="LYes" class="bg-outline  text-[#FFF] rounded-3xl w-20 h-8">YES</button>
+                    <button id="LNo"  class=" bg-outline  text-[#FFF] rounded-3xl w-20 h-8">NO</button>
+                </div>
+    
+            </div> 
+        </div>
+        <div class="fixed bottom-16 right-20">
+            <div class="relative">
+              <img id="ChatLogo" src="https://res.cloudinary.com/db5bsftqx/image/upload/f_auto/v1727603943/ZappnottLogoOnly_yqte5u.png" 
+                   alt="Chat Logo" 
+                   class="h-[4rem] cursor-pointer z-40">
+              <span id="Chat-Badge" class="absolute top-3 right-3 w-3 h-3 bg-outline text-white text-xs font-bold rounded-full px-1 z-50 transform translate-x-1/2 -translate-y-1/2 hidden">
+              </span>
+            </div>
+        </div>
+        <div id="ChatContent" class="hidden fixed h-[35rem] w-[25rem] rounded-xl bottom-16 right-20 bg-Likha z-40 shadow-2xl">
+            <div class="shadow-sm">
+                <div class="flex">
+                    <p class="my-2 font-Inter font-semibold ml-6">Zappnott</p>
+                    <p id="ChatClose" class="absolute right-5 my-2 cursor-pointer font-Inter font-extrabold">X</p>
+                </div>
+                <hr class="border-1 border-[#D8BC8C80] w-[35rem]">
+                <div class="m-4">
+                    <div id="chat-box" class="border p-4 h-[17rem] overflow-y-scroll bg-gray-50 rounded-lg">
+                    </div>
+                    <form autocomplete="off" id="message-form" class="mt-4 flex">
+                        <input autocomplete="off" type="text" id="message-input" class="border p-2 flex-grow rounded-l-lg" placeholder="Type a message...">
+                        <button type="submit" class="shadow-inner text-white p-2 rounded-r-lg">Send</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div id="Loader" class="fixed hidden top-[20rem] z-[51]  right-[37%] bg-[#F8ECDC] outline outline-4 outline-outline w-[350px] h-[220px] text-white  rounded shadow-lg  transform translate-y-4 transition-all duration-300">
+        <div class="">
+            <div class="flex flex-col space-y-5 justify-center items-center mx-[3rem] my-4">
+                <p class="font-libre font-bold text-center">Payment process ongoing Please wait</p>
+                <svg class="animate-spin h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="#f17d55" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="#f17d55"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+                </svg>
+                <button id="cancellation" class="mt-3 bg-outline  text-[#FFF] rounded-3xl w-20">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="Overlay" class="z-[50] bg-[#333333] hidden fixed h-[100%] w-[100%] pointer-events-none top-0 left-0 opacity-35">
+
+    </div>
+    <div id="OrderPopup" class="fixed hidden flex flex-col top-[20rem] z-30 items-center justify-center right-[37%] bg-[#F8ECDC] outline outline-4 outline-outline w-[400.25px] h-[200px] text-white  rounded shadow-lg  transform translate-y-4 transition-all duration-300">
+        <div class="w-[100px] ml-8 mb-4">
+            <svg width="60px" height="60px" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" stroke="#96a378" stroke-width="10" fill="none" />
+                <path d="M30 50 L45 65 L70 35" fill="none" stroke="#96a378" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+        </div>
+         
+        <div class="text-center">
+             <p class="">Your Order Has Been Accepted</p>
+        </div>
+        
+        <button id="ok" onclick="OrderOk()" class=" mt-3 bg-outline  text-[#FFF] rounded-3xl w-20">OK</button>
+    </div>
+    
+</body>
+<script>
+const currentDate = new Date();
+
+const futureDate = new Date(currentDate);
+futureDate.setDate(currentDate.getDate() + 10);
+
+const nextThreeDays = [];
+for (let i = 1; i <= 3; i++) {
+    const nextDate = new Date(futureDate);
+    nextDate.setDate(futureDate.getDate() + i);
+    nextThreeDays.push(nextDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+}
+
+document.getElementById('date1').innerText = nextThreeDays[0];
+document.getElementById('date2').innerText = nextThreeDays[1];
+document.getElementById('date3').innerText = nextThreeDays[2];
+
+const pickUpDiv = document.getElementById('PickUp');
+const indi = document.getElementById('Indicator');
+const dropdown = document.getElementById('dropdown');
+
+pickUpDiv.addEventListener('click', () => {
+    dropdown.classList.toggle('hidden');
+});
+
+document.getElementById('date1').addEventListener('click', () => {
+    indi.innerText = nextThreeDays[0];
+    dropdown.classList.add('hidden');
+});
+
+document.getElementById('date2').addEventListener('click', () => {
+    indi.innerText = nextThreeDays[1];
+    dropdown.classList.add('hidden');
+});
+
+document.getElementById('date3').addEventListener('click', () => {
+    indi.innerText = nextThreeDays[2];
+    dropdown.classList.add('hidden');
+});
+
+
+
+async function fetchUser() {
+    try{
+        const result = await fetch('/UserInfo');
+
+        if(result.ok){
+
+            const User = await result.json();
+            const UserName = User.UserName;
+            const Name = User.Name;
+            console.log(User);
+            document.getElementById('Mobile').innerText = User.MobileNum;
+            document.getElementById('Name').innerText = User.Name;
+            document.getElementById('Email').innerText = User.Email;
+
+        }
+    }
+    catch(error){
+        console.error('Error fetching user', error);
+    }
+}
+fetchUser();
+
+const orders = JSON.parse(sessionStorage.getItem('productName')); 
+
+fetch(`/CheckOut?orders=${encodeURIComponent(JSON.stringify(orders))}`)
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(products => {
+            const productData = products.map(product => ({
+                name: product.ProductName,
+                quantity: product.Quantity
+            }));
+            sessionStorage.setItem('productData', JSON.stringify(productData));
+
+            const productList = document.getElementById('Product');
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <div class="flex relative mb-4">
+                        <div class="relative">
+                            <img src="${product.Image}" alt="" class="w-[120px] h-[120px] rounded-md">
+                            <span id="quantity" class="bg-[#D9D9D9] w-[20px] h-[20px] absolute rounded-full top-[-6px] right-[-10px] items-center flex justify-center font-Montserrat font-semibold text-[12px]">${product.Quantity}</span>
+                        </div>
+                        <h1 id="productName" class="w-[262px] h-[107px] font-Montagu font-semibold text-[19px] ml-3 mt-2">${product.ProductName}</h1>
+                        <h2 id="productPrice" class="absolute right-8 translate-y-[250%] font-Montserrat font-medium text-[14px]">₱${product.Price}</h2>
+                    </div>
+                `;
+                productList.appendChild(productElement);
+                const formattedTotalPrice = sumProductPrices();
+                document.getElementById('TotalPrice').innerText = formattedTotalPrice;
+                document.getElementById('SubTotal').innerText = formattedTotalPrice;
+            });
+    })
+    .catch(error => console.error('Error fetching products:', error));
+
+    function sumProductPrices() {
+    const productPrices = document.querySelectorAll('#productPrice');
+    let total = 0;
+
+    productPrices.forEach(priceElement => {
+        const price = parseFloat(priceElement.textContent.replace('₱', '').replace(/,/g, ''));
+        total += price;
+    });
+
+    return total.toLocaleString('en-PH', { style: 'currency', currency: 'PHP' });;
+}
+//HEY
+const PlaceOrder = document.querySelector('#PlaceO');
+PlaceOrder.addEventListener('click',async function () {
+    const Indicator = document.getElementById('Indicator').innerText;
+    if(Indicator !== 'Select pick up date'){
+        let cancelRequested = false; 
+        try{
+            const priceElement = document.getElementById('TotalPrice');
+            const priceText = priceElement.innerText;
+
+            let price = parseFloat(priceText.replace(/[^\d.-]/g, ''));
+            const amountInCentavos = price * 100;
+            const loader = document.getElementById('Loader');
+            const overlay = document.getElementById('Overlay');
+            loader.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+
+            const cancelButton = document.getElementById('cancellation');
+            cancelButton.addEventListener('click', () => {
+                cancelRequested = true; 
+                loader.classList.add('hidden');
+                overlay.classList.add('hidden');
+                alert('Payment process canceled.');
+
+                const PaymentID = paymentIntentData.data.id;
+                console.log(PaymentID);
+
+                fetch('/archive-link', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ID: PaymentID }),
+                });
+
+            });
+            const createPaymentResponse = await fetch('/create-payment-link', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ amount: amountInCentavos }),
+            });
+            const paymentIntentData = await createPaymentResponse.json();
+
+                
+                console.log('Payment Intent Created:', paymentIntentData);
+
+                const clientKey = paymentIntentData.data.attributes.checkout_url;
+                const referenceNumber = paymentIntentData.data.attributes.reference_number; 
+                console.log(clientKey);
+                console.log(referenceNumber);
+
+                if (clientKey) {
+                    
+                    window.open(clientKey, '_blank');
+                    const checkPaymentStatus = async () => {
+                        if (cancelRequested) return; 
+
+                        try {
+                            const retrievePaymentResponse = await fetch('/retrieve-payment-link', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ reference_number: referenceNumber }),
+                            });
+
+                            const paymentStatusData = await retrievePaymentResponse.json();
+                            console.log('Payment Status:', paymentStatusData);
+
+                            if (paymentStatusData.data && paymentStatusData.data.length > 0) {
+                                const paymentStatus = paymentStatusData.data[0].attributes.status;
+
+                                if (paymentStatus === 'paid') {
+                                    loader.classList.add('hidden');
+                                    overlay.classList.add('hidden');
+                                    const retrieve = paymentStatusData.data[0].attributes.payments[0].data.id;
+                                    //console.log(retrieve);
+                                    const ordersString = sessionStorage.getItem('productName');
+                                    if (!ordersString) {
+                                        throw new Error('No orders found in session storage.');
+                                    }
+
+                                    let orders;
+                                    try {
+                                        orders = JSON.parse(ordersString);
+                                        if (!Array.isArray(orders)) {
+                                            throw new Error('Orders data is not an array.');
+                                        }
+                                    } catch (e) {
+                                        throw new Error('Failed to parse orders from session storage.');
+                                    }
+                                    console.log(JSON.parse(sessionStorage.getItem('productData')));
+                                    const OrderData = JSON.parse(sessionStorage.getItem('productData'));
+                                    const RequestData = {
+                                        OrderData,
+                                        retrieve: retrieve,
+                                        PickUp: indi.innerText
+                                    };
+                                    console.log('final',RequestData);   
+                                    fetch('/PlaceOrder', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        
+                                        body: JSON.stringify(RequestData)
+                                    })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            return response.text().then(text => {
+                                                throw new Error(text);
+                                            });
+                                        }
+                                        console.log(JSON.parse(sessionStorage.getItem('productName')))
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        console.log('Success:', data);
+                                        document.getElementById('OrderPopup').classList.remove('hidden');
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error:', error.message);
+                                    });
+                                } else {
+                                    setTimeout(checkPaymentStatus, 5000); 
+                                }
+                            } else {
+                                setTimeout(checkPaymentStatus, 5000);
+                            }
+                        } catch (error) {
+                            console.error('Error checking payment status:', error);
+                            setTimeout(checkPaymentStatus, 5000);
+                        }
+                    };
+
+                    checkPaymentStatus();
+
+                } else {
+                    console.error('Client key not found in payment intent response');
+                    loader.classList.add('hidden'); 
+                    overlay.classList.add('hidden'); 
+                }
+        }
+        catch{
+            console.error('Error:', error);
+                loader.classList.add('hidden'); 
+                overlay.classList.add('hidden'); 
+        }
+    }
+    else{
+        alert('Please select pickup date')
+    }
+});
+function OrderOk(){
+    document.getElementById('OrderPopup').classList.add('hidden');
+    window.location.href = 'AllCategory.html';
+}
+</script>
+<script src="Nav.js"></script>
+</html>

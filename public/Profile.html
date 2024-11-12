@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="img/ZappnottLogo.png" type="image/icon">
+    <title>Profile</title>
+</head>
+<style>
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      display: inline-block;
+      width: 39.36px;
+      height: 31.33px;
+      background-color: #F7F8EA;
+      border-radius: 0.375rem; 
+      position: relative;
+    }
+    
+    
+    input[type="checkbox"]:checked::after {
+      content: "";
+      display: block;
+      width: 0.5em;
+      height: 1em;
+      border: solid #000;
+      border-width: 0 0.25em 0.25em 0;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 5px; 
+      left: 16px; 
+    }
+
+    .Product-Cartt::-webkit-scrollbar {
+        display: none;
+
+    }
+    @keyframes Cart {
+        0% {
+        opacity: 0;
+        transform: translateX(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .animation-Cart{
+        animation: Cart 0.75s ease-in-out forwards;
+    }
+    @keyframes CloseCart {
+        0% {
+        opacity: 1;
+        transform: translateX(0%);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(50%);
+        }
+    }
+    .Close-Cart{
+        animation: CloseCart 0.5s ease-in-out forwards;
+    }
+    #NotifContents::-webkit-scrollbar {
+    height: 3px;
+    width: 5px; 
+    border-radius: 10px;
+    }
+
+    #NotifContents::-webkit-scrollbar-thumb {
+    background-color: rgba(103, 103, 103, 0.5);
+    border-radius: 10px; 
+
+
+    }
+    #message-input{
+        background-color: #f7f8ea;
+        font-size: 16px;
+        
+    }
+    #chat-box::-webkit-scrollbar {
+    height: 3px;
+    width: 5px; 
+    border-radius: 10px;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb {
+    background-color: rgba(103, 103, 103, 0.5); 
+    border-radius: 10px; 
+
+
+    }
+
+    #chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 46, 46, 0.7); 
+    }
+
+    #chat-box::-webkit-scrollbar-track {
+    background: #f7f8ea; 
+    border-radius: 60px; 
+    }
+    #NotifContents::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 46, 46, 0.7); 
+    }
+
+    #NotifContents::-webkit-scrollbar-track {
+    background: #f7f8ea;
+    border-radius: 60px; 
+    }
+
+    @keyframes spinFade {
+            0% {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .spin-fade {
+            animation: spinFade 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        
+        @keyframes expandFromLogo {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .expand-from-logo {
+            animation: expandFromLogo 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transform-origin: bottom right;
+        }
+        @keyframes collapseToLogo {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        .collapse-to-logo {
+            animation: collapseToLogo 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transform-origin: bottom right;
+        }
+        .content-hidden {
+            visibility: hidden;
+        }
+
+        /* Show content after expansion */
+        .content-visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease-in;
+        }
+    /* Custom CSS for Tailwind */
+    .search-bar.expanded {
+        width: 12rem; /* Width when expanded */
+        opacity: 1;
+        padding-left: 2.5rem; /* Space for the icon on the left */
+    }
+
+    #search-icon.expanded {
+        transform: translateX(-9rem); /* Move the icon to the left inside the search bar */
+    }
+</style>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<body>
+    <div class="bg-Likha h-[5rem] w-full shadow-md p-2.5 fixed z-50" >
+        <nav class="md:flex md:items-center">   
+            <div >
+                <img src="img/ZappnottLogo.png" alt="" class="h-[4rem] ml-[2rem] cursor-pointer md:cursor-default" onclick="Menu(this)" name = "menu" id="menubutton">
+            </div>
+            <div class="">
+                <ul class="md:flex md:space-x-14 md:items-center md:z-auto md:static absolute bg-Likha w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in md:ml-24">
+                    <li class="my-6 md:my-0">
+                        <a href="Index.html" class="font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            HOME
+                        </a>
+                    </li>
+                    <li>
+                        <div class="relative inline-block text-left">
+                            <div>
+                              <button type="button" class="inline-flex w-full justify-center font-Montserrat text-[12px] rounded-md bg-Likha text-sm font-semibold hover:text-outline duration-300" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                SHOP
+                                <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                              </button>
+                            </div>
+                          
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                  const menuButton = document.getElementById('menu-button');
+                                  const dropdownMenu = document.querySelector('[role="menu"]');
+                              
+                                  menuButton.addEventListener('click', function () {
+                                    dropdownMenu.classList.toggle('hidden');
+                                  });
+                              
+                                  document.addEventListener('click', function (event) {
+                                    if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                                      dropdownMenu.classList.add('hidden');
+                                    }
+                                  });
+                                });
+                              </script>
+                              
+                            <div class="absolute drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1] py-2 right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-Likha hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                              <div class="py-1" role="none">
+                                <a href="AllCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-0">All</a>
+                                <a href="DressCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-1">Dress</a>
+                                <a href="BagCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-2">Bag</a>
+                                <a href="JewelryCategory.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-2">Jewelry</a>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="/3D" class="font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            CUSTOMIZATION
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="Index.html#About" class="smooth-scroll font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            ABOUT
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="Index.html#footer" class="smooth-scroll font-Montserrat text-[12px] font-semibold hover:text-outline duration-300">
+                            CONTACT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex fixed p-3 top-1 right-1 md:right-16">
+                <div class="relative flex items-center">
+                    <input type="text" id="search-bar" class="search-bar w-0 h-8 opacity-0 transition-all duration-500 ease-in-out px-4 py-2 rounded-full border border-gray-300 focus:opacity-100 focus:w-48" placeholder="Search" autocomplete="off">
+
+                    <lord-icon
+                        id="search-icon"
+                        onclick="expandSearchBar()"
+                        src="https://cdn.lordicon.com/kkvxgpti.json"
+                        trigger="hover"
+                        class="absolute right-0 transition-all duration-500 ease-in-out cursor-pointer"
+                        style="width:1.75rem;height:1.75rem;margin-right: 0.75rem;">
+                    </lord-icon>
+                    <div id="SearchCon" class="bg-Likha h-auto w-[15rem] absolute top-12 rounded-3xl hidden shadow-2xl">
+                        
+                    </div>
+                </div>
+            
+
+                <div class="relative cursor-pointer inline-block p-[0.75rem]" id="ProfileIcon">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/kthelypq.json"
+                        trigger="hover"
+                        colors="primary:#000000"
+                        style="width:1.75rem;height:1.75rem">
+                    </lord-icon>
+                </div>
+
+                <div class="relative cursor-pointer inline-block p-[0.75rem]">
+                    <lord-icon
+                        id="NotifIcon"
+                        src="https://cdn.lordicon.com/vspbqszr.json"
+                        trigger="hover"
+                        style="width:1.75rem;height:1.75rem;">
+                    </lord-icon>
+                    <span id="notif-badge" class="animate-ping absolute top-[0.70rem] right-[12px] hidden items-center justify-center h-[8px] w-[8px] leading-none bg-outline rounded-full "></span>
+                    <span id="notifBadge" class="absolute top-3 right-[13px] items-center hidden justify-center h-[6px] w-[6px] leading-none bg-outline rounded-full"></span>
+                </div>
+
+                <div class="relative cursor-pointer inline-block p-[0.5rem]">
+                    <lord-icon
+                        id="CartIcon"
+                        src="https://cdn.lordicon.com/taymdfsf.json"
+                        trigger="hover"
+                        stroke="bold"
+                        colors="primary:#121331,secondary:#121331"
+                        style="width:2rem;height:2rem;">
+                    </lord-icon>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="bg-Likha min-h-screen">
+        <div id="main-container" class="relative min-w-min h-[40rem] top-[8rem]">
+            <div class=" w-[1250px] h-[40rem] mx-auto relative">
+                <div class="w-[25rem] h-auto space-x-10 flex mb-16 ml-[3rem]">
+                    <div id="ProfileContain" class="w-[120px] h-[120px] bg-outline rounded-full outline outline-1 outline-outline relative group">
+                        <img id="ProfilePic" src="img/profileblank.png" class="w-[120px] h-[120px] rounded-full absolute object-cover" alt="">
+                        <div id="EditProf" class="absolute flex items-center justify-center w-[120px] h-[120px] rounded-full bg-gradient-to-t from-[#333333] opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                            <h6 class="font-Inter text-Likha absolute bottom-2 text-[12px]">Edit</h6>
+                        </div>
+                        <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="insertProfileImage()" />
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <h1 id="Name" class="font-Inter font-semibold text-[15px] text-center" >
+                            
+                        </h1>
+                        <h2 id="UsernameDisplay" class="font-Inter font-normal text-[14px] text-center">
+                            
+                        </h2>
+                        <u id="DeleteAcc" class="cursor-pointer font-Inter font-normal text-[12px] text-[#00000080]"> 
+                            Delete Account
+                        </u>
+                    </div>
+                </div>
+                <div class="w-auto h-[3rem]  flex justify-center space-x-8 mb-6">
+                    <button id="Edit" class="font-Inter font-semibold w-[200px] h-[45px] rounded-[25px] text-[#000000] bg-[#F07C5480]">EDIT PROFILE</button>
+                    <button id="Password" class="font-Inter font-semibold w-[200px] h-[45px] rounded-[25px] text-[#000000]">PASSWORD</button>
+                </div>
+                    <hr class="w-auto border-1 border-outline">
+                    <div id="PasswordEdit" class=" w-[65rem] h-[20rem] mx-auto mt-7 flex justify-evenly items-center hidden">
+                        <div class="h-[15rem] w-[30rem] flex flex-col items-center justify-evenly">
+                            <div class="relative">
+                                <h1 class="ml-4">Old Password</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" type="password" name="" id="OldPass" value="">
+                                </div>
+                            </div>
+                            <div >
+                                <h1 class="ml-4">New Password</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" type="password" name="" id="NewPass" value="">
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="h-[15rem] w-[30rem] flex flex-col items-center mt-[4.75rem]">
+                            <div>
+                                <h1 class="ml-4">Confirm Password</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" type="password" name="" id="ConPass" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="ProfileEdit" class=" w-[65rem] h-[20rem] mx-auto mt-7 flex justify-evenly items-center">
+                        <div class="h-[15rem] w-[30rem] flex flex-col items-center justify-evenly">
+                            <div class="relative">
+                                <h1 class="ml-4">Name</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" oninput="restrictInput(this)" type="text" id="NameInput" value="JENNIE KIM" disabled>
+                                    <span id="EditName" class="absolute right-2 cursor-pointer focus:bg-hehe">edit</span>
+                                </div>
+                            </div>
+                            <div >
+                                <h1 class="ml-4">Username</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" oninput="restrictInput(this)" type="text" id="Username" value="jennierubyjane" disabled>
+                                <span id="EditUsername" class="absolute right-2 cursor-pointer">edit</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class=" h-[15rem] w-[30rem] flex flex-col items-center justify-evenly">
+                            <div>
+                                <h1 class="ml-4">Mobile No.</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" type="number"  id="Mobile" value="+63 9033526492" disabled>
+                                    <span id="EditMobile" class="absolute right-2 cursor-pointer">edit</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h1 class="ml-4">Email</h1>
+                                <div class="relative flex items-center">
+                                    <input class="w-[400px] h-[40px] rounded bg-[#F8ECDC80] border-[2px] border-[#F07C54] px-3" type="email" id="Email" value="jennierubyjane.kim@email.com" disabled>
+                                    <span id="EditEmail" class="absolute right-2 cursor-pointer">edit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class=" flex justify-center ">
+                        <button id="Save" class="bg-outline font-Montserrat font-semibold w-[150px] h-[40px] rounded-xl absolute bottom-0  text-[#fff]">Save</button>
+                        <button id="Change" class="bg-outline font-Montserrat font-semibold w-[150px] h-[40px] rounded-xl absolute bottom-0  text-[#FFFF] hidden">Change</button>
+                    </div>
+                
+            </div>
+        </div>
+        <div class="fixed hidden right-0 top-0 h-full w-[570px] bg-Likha z-[50] shadow-2xl p-6" id="Cartel">
+            <div>
+                <div class="flex items-center justify-between">
+                    <h1 class="font-Montagu font-semibold text-[24px] ml-3 mb-4">Cart Product</h1>
+                    <img src="img/ekis.png" alt="" class="w-[20px] h-[20px] relative mb-5 mr-5 cursor-pointer" id="CloseCart">
+                </div>
+                <hr class="border-outline border-[1.5px] w-auto">
+    
+            </div>
+            <div id="Product-Cart" class="overflow-auto h-[70vh] Product-Cartt"></div>
+            <div class="my-3 flex relative">
+                <h2 class="relative left-6 font-Montserrat font-extrabold text-[16px]">Total: </h2>
+                <p class="absolute right-6 font-Montserrat font-semibold text-[16px]" id="totalPriceDisplay">₱ 0.00</p>
+            </div>
+            <hr class="border-1 border-outline w-auto ">
+            <button id="PlaceOrder" class="bg-outline  font-Montserrat font-semibold w-[500px] h-[61.84px] rounded-xl mx-4 mt-[2rem]">CHECKOUT</button>
+        </div>
+        <div id="Notif" class="fixed pl-3 py-3 h-[24rem] w-[30rem] hidden right-[8rem] top-[3.5rem] z-50 drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1]  rounded-lg bg-Likha ">
+            <div class="shadow-sm">
+                <p class="my-2 ml-2 font-Inter">Notification</p>
+                <hr class="border-1 border-[#D8BC8C80] w-[28.5rem] mb-1">
+            </div>
+            <div id="NotifContents" class="overflow-y-auto  h-[20rem]">
+                <div id="NotifContent" class="relative space-y-5 ">
+                
+                </div>
+            </div>
+        </div>
+        <div class="fixed bottom-16 right-20">
+            <div class="relative">
+              <img id="ChatLogo" src="https://res.cloudinary.com/db5bsftqx/image/upload/f_auto/v1727603943/ZappnottLogoOnly_yqte5u.png" 
+                   alt="Chat Logo" 
+                   class="h-[4rem] cursor-pointer z-40">
+              <span id="Chat-Badge" class="absolute top-3 right-3 w-3 h-3 bg-outline text-white text-xs font-bold rounded-full px-1 z-50 transform translate-x-1/2 -translate-y-1/2 hidden">
+              </span>
+            </div>
+        </div>
+        <div id="ChatContent" class="hidden fixed h-[35rem] w-[25rem] rounded-xl bottom-16 right-20 bg-Likha z-40 shadow-2xl">
+            <div class="shadow-sm">
+                <div class="flex">
+                    <p class="my-2 font-Inter font-semibold ml-6">Zappnott</p>
+                    <p id="ChatClose" class="absolute right-5 my-2 cursor-pointer font-Inter font-extrabold">X</p>
+                </div>
+                <hr class="border-1 border-[#D8BC8C80] w-[35rem]">
+                <div class="m-4">
+                    <div id="chat-box" class="border p-4 h-[17rem] overflow-y-scroll bg-gray-50 rounded-lg">
+                    </div>
+                    <form autocomplete="off" id="message-form" class="mt-4 flex">
+                        <input autocomplete="off" type="text" id="message-input" class="border p-2 flex-grow rounded-l-lg" placeholder="Type a message...">
+                        <button type="submit" class="shadow-inner text-white p-2 rounded-r-lg">Send</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+        <div id="ProfileMenu" class="fixed hidden flex-col h-[300px] w-[300px] right-[11rem] top-[3.5rem] z-50 drop-shadow-lg shadow-2xl shadow-[#2b2a2aa1]  rounded-lg bg-Likha flex justify-center">
+            <div class="flex flex-col items-center">
+                <div class="w-[80px] h-[80px] bg-outline rounded-full outline outline-1 outline-outline">
+                    <img id="ProfilePicMenu" src="img/profilepic.jpeg" alt="" class="w-[80px] h-[80px] rounded-full">
+                </div>
+                <div class="font-Inter" id="UsernameMenu">
+                    
+                </div>
+            </div>
+            <div class="py-1 flex" ></div>
+                <div class="flex-col flex relative">
+                    <a href="Profile.html" class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-0">Account</a>
+                    <a href="Orders.html" class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-1">Orders</a>
+                    <a href="BagCategory.html" class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="menu-item-2">Design</a>
+                    <hr class="border-outline border-[1.5px] w-[250px] mx-auto relative my-2">
+                    <div class="pl-8 font-Montserrat font-semibold text-[14px] px-4 py-2 text-sm text-gray-700 hover:bg-sign rounded-2xl cursor-pointer transition ease-in-out duration-200 mx-2" role="menuitem" tabindex="-1" id="LogOut">Log Out</div>
+                </div>
+            </div>
+            <div id="LogOutModal" class="fixed top-1/2 z-30 flex flex-col items-center justify-center left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F8ECDC] w-[350px] h-[220px] text-white  rounded shadow-lg transform hidden transition-all duration-300">
+                <div class="flex flex-col items-center justify-center">
+                    <img src="img/LogOutModal.png" class="w-[80px]" alt="">
+                    <div class="flex flex-col space-y-1 items-center w-[19rem] text-center">
+                        <span>Are you sure you want to Log Out?</span>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-8 mt-5">
+                    <button id="LYes" class="bg-outline  text-[#FFF] rounded-3xl w-20 h-8">YES</button>
+                    <button id="LNo"  class=" bg-outline  text-[#FFF] rounded-3xl w-20 h-8">NO</button>
+                </div>
+    
+            </div> 
+        </div>
+        <div id="DeleteAccModal" class="fixed top-1/2 z-30 items-center left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F8ECDC] w-[350px] h-[220px] text-white  rounded shadow-lg hidden transform transition-all duration-300">
+            <div class="">
+                <img src="img/DeleteOrange.png" class="w-[100px] ml-[34%]" alt="">
+                <div class="relative left-1/2 -translate-x-1/2 flex flex-col space-y-1 items-center w-[19rem] text-center">
+                    <span>Are you sure you want to delete this account?</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-around mt-5">
+                <button id="Yes" class="bg-outline  text-[#FFF] rounded-3xl w-20 h-8">YES</button>
+                <button id="No"  class=" bg-outline  text-[#FFF] rounded-3xl w-20 h-8">NO</button>
+            </div>
+
+        </div> 
+        <div id="Old" class="fixed hidden top-1/2 z-30 flex flex-col items-center justify-center left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F8ECDC] w-[350px] h-[220px] text-white  rounded shadow-lg  transform transition-all duration-300">
+            <div class="space-y-3 flex flex-col items-center">
+                <img src="img/error.png" class="w-[50px]" alt="">
+                <div class="relative left-1/2 -translate-x-1/2 flex flex-col space-y-1 items-center w-[19rem] text-center">
+                    <span class="font-Inter font-extrabold text-[15px] text-[#6B707B]">The old password is incorrect. Please try again.</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-around mt-5">
+                <button id="OLDOK" class="bg-outline  text-[#FFF] rounded-3xl w-20 h-8 font-Inter font-extrabold">OK</button>
+            </div>
+
+        </div> 
+        <div id="ConfirmPass" class="fixed hidden top-1/2 z-30 flex flex-col items-center justify-center left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F8ECDC] w-[350px] h-[220px] text-white  rounded shadow-lg  transform transition-all duration-300">
+            <div class="space-y-3 flex flex-col items-center">
+                <img src="img/error.png" class="w-[50px]" alt="">
+                <div class="relative left-1/2 -translate-x-1/2 flex flex-col space-y-1 items-center w-[19rem] text-center">
+                    <span class="font-Inter font-extrabold text-[15px] text-[#6B707B]">Passwords do not match. Please try again.</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-around mt-5">
+                <button id="CONOK" class="bg-outline  text-[#FFF] rounded-3xl w-20 h-8 font-Inter font-extrabold">OK</button>
+            </div>
+
+        </div>
+        <div id="ChangeModal" class="bg-[#F8ECDC] w-[500px] h-[287px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center hidden rounded-lg shadow-xl">
+            <img src="img/password.png" alt="" class="w-[100px] h-[100px] mb-6">
+            <h1 class="font-Inter font-extrabold text-[#6B707B] text-center text-[16px]">Your Password Has Been Changed</h1>
+            <h1 class="font-Montserrat font-bold text-[#000000] text-[20px]">Sucessfully!</h1>
+            <button class="bg-[#F07C54] w-[50px] h-[30px] rounded-full font-Inter font-extrabold text-[#FFFFFF] mt-4" onclick="ChangeOK()">OK</button>
+        </div> 
+    </div>
+    
+</body>
+<script>
+function restrictInput(input) {
+    // Remove non-alphabet characters except space
+    input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+}
+
+    const Modal = document.getElementById('DeleteAccModal');
+    const Yes = document.getElementById('Yes');
+    const No = document.getElementById('No');
+    document.getElementById('DeleteAcc').addEventListener('click', async () => {
+        Modal.classList.remove('hidden');
+        No.addEventListener('click', async () => {
+        Modal.classList.add('hidden');
+        });
+        Yes.addEventListener('click', async() => {
+            fetch('/DeleteAcc', {
+                method: 'PUT'
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Account deleted successfully');
+                    fetch('/LogOut', {
+                        method: 'POST',
+                        credentials: 'include',
+                    })
+                    .then(response => {
+                        console.log('Response Status:', response.status);
+                        return response.json().then(data => ({ status: response.status, body: data }));
+                    })
+                    .then(({ status, body }) => {
+                        if (status === 200) {
+                            alert('Logout successful');
+                            window.location.href = 'SignIn.html';
+                        } else {
+                            alert('Error logging out: ' + body);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error logging outt'+ error);
+                    });
+                    window.location.href = "Index.html"
+                } else {
+                    console.error('Failed to delete Account');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting Account:', error);
+            });
+        });
+    });
+    document.getElementById('Change').addEventListener('click', async () => {
+    const oldPassword = document.getElementById('OldPass').value;
+    const newPassword = document.getElementById('NewPass').value;
+    const confirmPassword = document.getElementById('ConPass').value;
+
+    if (oldPassword && newPassword && confirmPassword) {
+        if (newPassword === confirmPassword) {
+            try {
+                const response = await fetch('/ChangePass', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        oldPassword: oldPassword,
+                        newPassword: newPassword,
+                    }),
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    document.getElementById('ChangeModal').classList.remove('hidden');
+                    
+                } else{
+                    document.getElementById('Old').classList.remove('hidden');
+                }
+            } catch (error) {
+                alert('An error occurred: ' + error.message);
+            }
+        } else {
+           document.getElementById('ConfirmPass').classList.remove('hidden');
+        }
+    } else {
+        alert('Please fill in all the fields before proceeding.');
+    }
+});
+function ChangeOK(){
+    document.getElementById('ChangeModal').classList.add('hidden');
+    window.location.reload();
+};
+document.getElementById('OLDOK').addEventListener('click', async() =>{
+    document.getElementById('Old').classList.add('hidden');
+});
+document.getElementById('CONOK').addEventListener('click', async() =>{
+    document.getElementById('ConfirmPass').classList.add('hidden');
+});
+    async function insertProfileImage() {
+            const userId = 'YOUR_USER_ID'; // Replace with the actual user ID
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please select an image file.');
+                return;
+            }
+
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('userId', userId); // Append user ID to form data
+
+            // Make a PUT request to update the image URL in the database
+            try {
+                const response = await fetch('/updateProfileImage', {
+                    method: 'PUT',
+                    body: formData, // Send FormData directly
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.text(); // Use text() if expecting a simple response
+                console.log('Profile image updated successfully:', result);
+
+                // Update the profile image in the UI
+                const updatedImageUrl = URL.createObjectURL(file);
+                document.getElementById('ProfilePic').src = updatedImageUrl; // Show the uploaded image
+            } catch (error) {
+                console.error('Error updating profile image in database:', error);
+            }
+        }
+document.getElementById('EditProf').addEventListener('click', () => {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.click();
+});
+document.addEventListener('DOMContentLoaded', function() {
+        const saveButton = document.getElementById('Save');
+        const nameInput = document.getElementById('NameInput');
+        const usernameInput = document.getElementById('Username');
+        const mobileInput = document.getElementById('Mobile');
+        const emailInput = document.getElementById('Email');
+        
+        saveButton.addEventListener('click', async function() {
+
+            // Collect the values from the form inputs
+            const name = nameInput.value;
+            const username = usernameInput.value;
+            const mobile = mobileInput.value;
+            const email = emailInput.value;
+
+            // Create the payload for the POST request
+            const data = {
+                name: name,
+                username: username,
+                mobile: mobile,
+                email: email
+            };
+
+            fetch('/UpdateProfile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Success update:', data);
+                fetchUser();
+                })
+                .catch((error) => {
+                     console.error('Error:', error);
+                });
+                window.location.reload();
+        });
+
+    });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchUser();
+});
+
+        const Edit = document.getElementById('Edit');
+        const Pass = document.getElementById('Password');
+        const ProfileEdit = document.getElementById('ProfileEdit');
+        const PasswordEdit = document.getElementById('PasswordEdit');
+        const Save = document.getElementById('Save');
+        const Change = document.getElementById('Change');
+        const EditName = document.getElementById('EditName');
+        const EditUsername = document.getElementById('EditUsername');
+        const EditMobile = document.getElementById('EditMobile');
+        const EditEmail = document.getElementById('EditEmail');
+
+        Edit.addEventListener('click', function(event){
+            if(!Edit.classList.contains('bg-[#F07C5480]')){
+                Edit.classList.add('bg-[#F07C5480]');
+                Pass.classList.remove('bg-[#F07C5480]');
+                ProfileEdit.classList.remove('hidden');
+                PasswordEdit.classList.add('hidden');
+                Change.classList.add('hidden');
+                Save.classList.remove('hidden');
+            }
+        });
+        Pass.addEventListener('click', function(event){
+            if(!Pass.classList.contains('bg-[#F07C5480]')){
+                Pass.classList.add('bg-[#F07C5480]');
+                Edit.classList.remove('bg-[#F07C5480]');
+                ProfileEdit.classList.add('hidden');
+                PasswordEdit.classList.remove('hidden');
+                Change.classList.remove('hidden');
+                Save.classList.add('hidden');
+            }
+        });
+        EditName.addEventListener('click', function(event){
+            if(document.getElementById('NameInput').disabled = true ){
+                document.getElementById('NameInput').disabled = false; 
+            }
+        });
+        EditUsername.addEventListener('click', function(event){
+            if(document.getElementById('Username').disabled = true ){
+                document.getElementById('Username').disabled = false; 
+            }
+        });
+        EditMobile.addEventListener('click', function(event){
+            if(document.getElementById('Mobile').disabled = true ){
+                document.getElementById('Mobile').disabled = false; 
+            }
+        });
+        EditEmail.addEventListener('click', function(event){
+            if(document.getElementById('Email').disabled = true ){
+                document.getElementById('Email').disabled = false; 
+            }
+        });
+
+
+async function fetchUser() {
+    try{
+        const result = await fetch('/UserInfo');
+
+        if(result.ok){
+
+            const User = await result.json();
+            const UserName = User.UserName;
+            const Name = User.Name;
+            console.log(User);
+            document.getElementById('Mobile').value = User.MobileNum;
+            document.getElementById('UsernameMenu').innerText = UserName;
+            document.getElementById('Username').value = UserName;
+            document.getElementById('Name').innerText = User.Name;
+            document.getElementById('NameInput').value = User.Name;
+            document.getElementById('Email').value = User.Email;
+            document.getElementById('UsernameDisplay').innerText = UserName;
+            if(User.ProfilePic){
+                document.getElementById('ProfilePic').src = User.ProfilePic;
+            }
+            
+        }
+    }
+    catch(error){
+        console.error('Error fetching user', error);
+    }
+}
+fetchUser();
+
+
+</script>
+<script src="Nav.js"></script>
+</html>

@@ -1,0 +1,362 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="img/ZappnottLogo.png" type="image/icon">
+    <title>Home</title>
+</head>
+<script src="AdminPage.js"></script>
+<body class="hidden">
+    <div class="bg-Likha h-[5rem] w-full shadow-md p-2.5 fixed z-50">
+        <nav class="md:flex md:items-center">   
+            <div >
+                <img src="img/ZappnottLogo.png" alt="" class="h-[4rem] ml-[2rem] cursor-pointer md:cursor-default" onclick="Menu(this)" name = "menu" id="menubutton">
+            </div>
+            <div class="">
+                <ul class="md:flex md:space-x-16 md:items-center md:z-auto md:static absolute bg-Likha w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in md:ml-24">
+                    <li class="my-6 md:my-0">
+                        <a href="Home.html" class="hover:text-outline duration-300">
+                            HOME
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="" class="hover:text-outline duration-300">
+                            SHOP
+                        </a>
+                    </li>
+                    <li class="my-6 md:my-0">
+                        <a href="" class="hover:text-outline duration-300">
+                            CREATE
+                        </a>
+                </ul>
+            </div>
+            <div class="flex fixed p-3 top-1 right-1 md:right-16">
+                <img src="img/SEARCH BAR.png" class="h-[3rem]" alt="">
+                <img id="Profile" class="cursor-pointer h-[3rem] w-[3rem]" src="img/PROFILE.png"  alt="" >
+                <img src="img/CART.png" class="h-[3rem]" alt="">
+            </div>
+        </nav>
+    </div>
+    <div class="bg-Likha min-h-screen">
+        <div id="main-container">
+            <div id="slide-container">    
+                <div id="slider-wrapper" class="relative max-w-[65-rem] pt-[5rem]"  >
+                    <div id="slider" class="flex aspect-[25/9] scroll-smooth overflow-x-hidden ">
+                        <img src="img/Slider1.jpg" class="flex flex-1 snap-align-start" id="Slider1" alt="">
+                        <img src="img/Slider2.jpg" class="flex flex-1 snap-align-start" id="Slider2"alt="">
+                        <img src="img/Slider3.jpg" class="flex flex-1 snap-align-start" id="Slider3" alt="">
+                    </div>
+                    <div id="slider-nav" class="flex grid-cols-2 gap-x-4 absolute bottom-[1.25rem] left-[50%] translate-x-[-50%]">
+                        <a id="Nav1" href="#Slider1" class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#fff] transition-opacity ease duration-200 opacity-[1]"></a>
+                        <a  id="Nav2" href="#Slider2" class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#fff] transition-opacity ease duration-200 opacity-25"></a>
+                        <a id="Nav3" href="#Slider3" class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#fff] transition-opacity ease duration-200 opacity-25"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="category" class="bg-[#B0BCA480] w-auto h-[21rem] flex flex-col items-center pt-[3.5rem] space-y-16">
+                <h5 class="font-libre font-semibold text-6xl">Categories</h5>
+                <div id="container"class ="flex items-center space-x-9">
+                    <a href="">
+                        <div id="all" class="w-[325px] h-[75px] bg-[#96A378CC] rounded-lg flex items-center flex-col pt-6">
+                            <p class="text-[#fff] font-bold text-xl">All</p>
+                        </div>
+                    </a>
+
+                    <a href="">
+                        <div id="Jewelry" class="w-[325px] h-[75px] bg-[#96A378CC] rounded-lg flex items-center space-x-5 pl-[5.5rem]">
+                            <img src="img/Jewelry.png" alt="" class="w-[3rem]">
+                            <p class="text-[#fff] font-bold text-xl flex-1">Jewelry</p>
+                        </div>
+                    </a>
+                    
+                    <a href="">
+                        <div id="Bags" class="w-[325px] h-[75px] bg-[#96A378CC] rounded-lg flex items-center space-x-5 pl-[6rem]">
+                            <img src="img/BAG.png" alt="" class="w-[3rem]">
+                            <p class="text-[#fff] font-bold text-xl flex-1">Bag</p>
+                        </div>
+                    </a>
+                    
+                    <a href="">
+                        <div id="Dress" class="w-[325px] h-[75px] bg-[#96A378CC] rounded-lg flex items-center space-x-5 pl-[6.5rem]">
+                            <img src="img/DRESS.png" alt="" class="w-[2rem]">
+                            <p class="text-[#fff] font-bold text-xl flex-1">Dress</p>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bg-Likha max-w-auto h-auto flex flex-col items-center pt-[6rem] space-y-32">
+                <div>
+                    <H6 class="text-6xl font-libre font-extrabold">Shop</H6>
+                </div>
+                <div class="flex-col space-y-[16rem]">
+                    <div id="product-list" class="flex space-x-9 flex-wrap justify-center"></div>
+                </div>
+            </div>
+        </div>
+        <div id = "userInfo"></div>
+        <div id="AdminMenu" class="bg-[#F8ECDC] outline hidden fixed outline-[3px] p-0 outline-outline w-[491px] h-[320px]  right-[0.15rem] top-[5.15rem] flex flex-col justify-evenly">
+            <a href="OrderList.html" class="text-center outline outline-1 pt-[20px] outline-outline h-[5rem] items-center">
+                <p class="font-Montserrat font-semibold">Order</p>
+            </a>
+            
+            <a href="" class="text-center outline outline-1 pt-[20px] outline-outline h-[5rem] items-center">
+                <p class="font-Montserrat font-semibold">Landing</p>
+            </a>
+            <a href="AdminHome.html" class="text-center outline outline-1 pt-[20px] outline-outline h-[5rem] items-center">
+                <p class="font-Montserrat font-semibold">Home Page</p>
+            </a>
+            <a href="" class="text-center outline outline-1 pt-[20px] outline-outline h-[5rem] items-center">
+                <p class="font-Montserrat font-semibold">3D Customization</p>
+            </a>
+            <a href="" class="text-center outline outline-1 pt-[20px] outline-outline h-[5rem] items-center" onclick="LogOut()">
+                <p class="font-Montserrat font-semibold">Log Out</p>
+            </a>
+        </div>
+    </div>
+    
+</body>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const Profile = document.getElementById('Profile');
+        const Menu = document.getElementById('AdminMenu');
+
+        Profile.addEventListener('click', () => {
+
+            if (!Menu.classList.contains('hidden')) {
+                Menu.classList.add('hidden');
+            } else {
+                Menu.classList.remove('hidden');
+            }
+        });
+    });
+//     document.getElementById('LogOut').addEventListener('click', () => {
+//     fetch('/LogOut', {
+//         method: 'POST',
+//         credentials: 'include', // Ensure cookies are included in the request
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             alert('Logout successful');
+//             // Redirect to login page or home page
+//             window.location.href = '/SignIn.html';
+//         } else {
+//             alert('Error logging out');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//         alert('Error logging out');
+//     });
+// });
+        
+// function closeEdit(){
+//     var editForm = document.getElementById("editForm");
+//         editForm.classList.add("hidden");
+// }   
+function CloseAdd(){
+    var editForm = document.getElementById("additionalDiv");
+        editForm.classList.add("hidden");
+}   
+
+fetch('/products')
+    .then(response => response.json())
+    .then(products => {
+        products.forEach(product => {
+            const productList = document.getElementById('product-list');
+            const productElement = document.createElement('div');
+            productElement.innerHTML = `
+                <div class="flex bg-[#D8BC8C80] w-[318px] h-[500px] group outline outline-outline outline-1 rounded-xl justify-center relative mb-[2rem]" id="product-container">
+                    <div class="flex flex-col z-1">
+                        <img src="${product.imagePath}" alt="${product.productName}" class="w-[12rem] mt-[6rem] group-hover:opacity-75 transition delay-300">
+                        <div class="bottom-1 absolute text-center flex-cols inset-x-0 p-4 items-center h-[5rem] w-auto">
+                            <h2>${product.productName}</h2>
+                            <p>Price: ${product.productPrice}</p>
+                        </div>
+                    </div>
+
+                    <div class="absolute flex inset-x-0 p-4 opacity-0 w-[318px] h-[500px] flex-col pt-[10rem] rounded-xl space-y-9 group-hover:opacity-100 transition-opacity duration-300 delay-300 bg-[#00000033] z-19">
+                        <button class="font-Inter text-[#fff] flex item-center justify-center" id="Add"><img src="img/Add.png" class="h-7 mr-2">Add</button>
+                        <button class="font-Inter text-[#fff] flex item-center justify-center" id="Edit"><img src="img/Edit.png" class="h-6 mr-2">Edit</button>
+                        <button class="font-Inter text-[#fff] flex item-center justify-center" id="Delete"><img src="img/Delete.png" class="h-6 mr-2">Delete</button>
+                    </div>
+
+                    <div class="w-[60rem] h-[30rem] bg-sign outline outline-outline outline-1 rounded-xl fixed top-[28rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 inset-0 items-center justify-center hidden" id="additionalDiv">
+                        <form id="uploadForm" enctype="multipart/form-data" class="flex items-center mx-28 mt-24 space-x-32">
+                            <div>
+                                <label for="file-upload" class="flex items-center p-3 cursor-pointer bg-[#D8BC8C80] w-[20rem] h-[17rem] rounded-xl">
+                                    <img id="previewImage" src="img/+.png" alt="" class="mx-auto">
+                                </label>
+                                <input id="file-upload" type="file" class="hidden" name="image" onchange="previewFile()">
+                            </div>
+                            
+                            <div class="flex-col space-y-3">
+                                <input type="text" name="productName" id="productName" class="outline outline-1 outline-outline w-[282px] h-[45px] p-3 rounded-lg" placeholder="Product Name">
+                                <input type="number" name="productPrice" id="productPrice" placeholder="Product Price" class="outline outline-1 outline-outline w-[200px] h-[40px] p-3 rounded-lg">
+                                <br>
+                                <label class="font-Montagu" for="Cat">Category:</label>
+                                <select class="rounded-lg font-Montagu outline outline-1 p-1 ml-[1rem] outline-outline" name="Cat" id="Cat">
+                                    <option value="1">Bag</option>
+                                    <option value="2">Dress</option>
+                                    <option value="3">Jewelry</option>
+                                </select>
+                                <input type="text" name="productDes" id="productDes" class="outline outline-1 outline-outline w-[300px] h-[55px] p-3 rounded-lg" placeholder="Product Description">
+                                <label class="font-Montagu" for="Stock">Stock/s:</label> 
+                                <input style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);" type="number" name="Stock" id="Stock"class="outline outline-3 outline-outline w-[87px] h-[40px] p-3 rounded-lg ml-[1rem] drop-shadow-xl">
+                                <button class="bg-outline font-Montagu w-[156px] h-[25px] rounded-lg font-semibold text-[#fff]">ADD</button>
+                            </div>
+                        </form>
+                        <div class="bg-[#FFFFFF] w-[62px] h-[62px] rounded-[100%] cursor-pointer outline outline-outline outline-1 absolute right-3 top-3 z-10 flex items-center" onclick="CloseAdd()">
+                            <img src="img/x.png" class="w-auto mx-auto" id="CloseAdd">
+                        </div>
+                    </div>
+                    <div class="w-[60rem] h-[30rem] bg-sign outline outline-outline outline-1 rounded-xl fixed top-[28rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center hidden" id="editForm">
+                        <form id="uploadForm" enctype="multipart/form-data" class="flex items-center mx-28 mt-24 space-x-32">
+                            <div class="flex items-center bg-[#D8BC8C80] pl-9 w-[30rem] h-[17rem] rounded-xl">
+                                <img src="" id="editedProductImage" class="w-auto h-full" alt="">
+                            </div>
+                            
+                            <div class="flex-col space-y-3">
+                                <input type="text" name="editedProductName" id="editedProductName" class="outline outline-1 outline-outline w-[282px] h-[45px] p-3 rounded-lg" placeholder="Edited Product Name">
+                                <input type="number" name="editedProductPrice" id="editedProductPrice" placeholder="Edited Product Price" class="outline outline-1 outline-outline w-[200px] h-[40px] p-3 rounded-lg">
+                                <button onclick="saveEdit()" class="px-4 py-2 bg-green-500 text-white rounded" id="saveEdit">Save</button>
+                            </div>
+                        </form>
+                        <div class="bg-[#FFFFFF] w-[62px] h-[62px] rounded-[100%] outline justify-center outline-outline outline-1 cursor-pointer absolute right-3 top-3 z-10 flex items-center" id="CloseEdit">
+                            <div class = "font-Montserrat font-black text-4xl">X</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productList.appendChild(productElement);
+            
+            const CloseEditButton = productElement.querySelector('#CloseEdit');
+            CloseEditButton.addEventListener('click', function() {
+                const editForm = productElement.querySelector('#editForm');
+                editForm.classList.add('hidden');
+            });
+
+            document.addEventListener('click', function(event) {
+                const editButton = event.target.closest('#Edit');
+                if (editButton) {
+                    const productContainer = editButton.closest('#product-container');
+                    const productName = productContainer.querySelector('h2').innerText;
+                    const productPrice = productContainer.querySelector('p').innerText.replace('Price: ', '');
+                    const productImage = productContainer.querySelector('img').src;
+
+                    const editedProductNameInput = productContainer.querySelector('#editedProductName');
+                    const editedProductPriceInput = productContainer.querySelector('#editedProductPrice');
+                    const editedProductImage = productContainer.querySelector('#editedProductImage');
+                    editedProductNameInput.value = productName;
+                    editedProductPriceInput.value = productPrice;
+                    editedProductImage.src = productImage;
+
+                    const saveButton = productContainer.querySelector('#saveEdit');
+                    saveButton.addEventListener('click', function() {
+                        const updatedName = editedProductNameInput.value;
+                        const updatedPrice = editedProductPriceInput.value;
+
+                        fetch(`/updateProduct/${encodeURIComponent(productName)}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                updatedName: updatedName,
+                                updatedPrice: updatedPrice
+                            })
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log('Product updated successfully');
+                                } else {
+                                    console.error('Failed to update product');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error updating product:', error);
+                            });
+                    });
+
+                    const editForm = productContainer.querySelector('#editForm');
+                    editForm.classList.remove('hidden');
+                }
+            });
+
+            // Delete
+
+            document.addEventListener('click', function(event) {
+                const DeleteButton = event.target.closest('#Delete');
+                if (DeleteButton) {
+                    const productContainer = DeleteButton.closest('#product-container');
+
+                    const productName = productContainer.querySelector('h2').innerText;
+
+                    fetch(`/DeleteProduct/${encodeURIComponent(productName)}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log('Product deleted successfully');
+                                window.location.href = "AdminHome.html"
+                            } else {
+                                console.error('Failed to delete product');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error deleting product:', error);
+                        });
+                    // }
+                }
+            });
+
+            const addButton = productElement.querySelector('#Add');
+            addButton.addEventListener('click', function() {
+                document.getElementById('additionalDiv').classList.remove('hidden');
+            });
+            const Form = productElement.querySelector('#uploadForm')
+            Form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(this);
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const messageElement = document.getElementById('message');
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    console.log("Error uploading");
+                }
+            });
+        });
+    })
+    .catch(error => console.error('Error fetching products:', error));
+
+function previewFile() {
+    var preview = document.getElementById('previewImage');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+        preview.src = reader.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "img/+.png"; 
+    }
+}
+
+    </script>   
+<script src="SliderScript.js"></script>
+<script src="AuthorizationBE.js"></script>
+</html>
